@@ -1,0 +1,1486 @@
+# Example Converted SQL Content
+
+Please paste the corresponding SQL query for each of the 4 XML files under the headers below:
+
+---
+
+## 1. SQL for CV_SEFIR_VT_ZKSL01T.xml
+```sql
+-- Paste SQL here
+```
+,ZHC_SL_S2 AS(
+WITH
+-- Stage 1: Base Data with filters
+zksl01t AS (
+ SELECT * FROM `${constants.dlh_main}.erp__stn.zksl01t`
+ WHERE RCLNT = '010'
+   AND RLDNR = 'ZA'
+   AND RRCTY IN ('0', '2')
+   AND RVERS = '001'
+   AND recordstamp > zksl01t_recordstamp
+),
+
+
+-- Stage 2: Unpivot with Pre-calculated Cumulative Balances
+-- The cumulative balances must be calculated from the ORIGINAL row's columns,
+-- not via window functions across unpivoted rows
+Unpivoted_zksl01t AS (
+ SELECT
+   b.RCLNT, b.RLDNR, b.RRCTY, b.RVERS, b.RYEAR, b.ROBJNR, b.COBJNR, b.SOBJNR,
+   b.RTCUR, b.RUNIT, b.DRCRK, b.RPMAX, b.RBUKRS, b.RACCT, b.RFAREA, b.RPRCTR,
+   b.RZZREGION, b.RZZREPHIER, b.RHOART, b.RZZKUKLA, b.LOGSYS, b.RASSC, b.RMVCT,
+   b.ZZCUST, b.EPRCTR, b.KOKRS, b.ZZCONSCODE, b.WERKS, b.STAGR, b.ZZACTIV,
+   b.ZZALLOC, b.ZZONLINE, b.ZZBOI, b.SBUKRS, b.SFAREA, b.SPRCTR, b.SZZREPHIER,
+   b.SHOART, b.GSBER, b.CSPRED, b.QSPRED,
+   b.operation_flag, b.is_deleted, b.recordstamp,
+   p.POPER,
+   p.TSL,
+   p.HSL,
+   p.KSL,
+   p.MSL,
+   p.ZK_BAL_TC,
+   p.ZK_BAL_LC,
+   p.ZK_BAL_GC
+ FROM zksl01t b
+ CROSS JOIN UNNEST([
+   STRUCT('000' AS POPER, b.TSLVT AS TSL, b.HSLVT AS HSL, b.KSLVT AS KSL, b.MSLVT AS MSL,
+          b.TSLVT AS ZK_BAL_TC, b.HSLVT AS ZK_BAL_LC, b.KSLVT AS ZK_BAL_GC),
+   STRUCT('001', b.TSL01, b.HSL01, b.KSL01, b.MSL01,
+          b.TSLVT + b.TSL01, b.HSLVT + b.HSL01, b.KSLVT + b.KSL01),
+   STRUCT('002', b.TSL02, b.HSL02, b.KSL02, b.MSL02,
+          b.TSLVT + b.TSL01 + b.TSL02, b.HSLVT + b.HSL01 + b.HSL02, b.KSLVT + b.KSL01 + b.KSL02),
+   STRUCT('003', b.TSL03, b.HSL03, b.KSL03, b.MSL03,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03),
+   STRUCT('004', b.TSL04, b.HSL04, b.KSL04, b.MSL04,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04),
+   STRUCT('005', b.TSL05, b.HSL05, b.KSL05, b.MSL05,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05),
+   STRUCT('006', b.TSL06, b.HSL06, b.KSL06, b.MSL06,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06),
+   STRUCT('007', b.TSL07, b.HSL07, b.KSL07, b.MSL07,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07),
+   STRUCT('008', b.TSL08, b.HSL08, b.KSL08, b.MSL08,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08),
+   STRUCT('009', b.TSL09, b.HSL09, b.KSL09, b.MSL09,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09),
+   STRUCT('010', b.TSL10, b.HSL10, b.KSL10, b.MSL10,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10),
+   STRUCT('011', b.TSL11, b.HSL11, b.KSL11, b.MSL11,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11),
+   STRUCT('012', b.TSL12, b.HSL12, b.KSL12, b.MSL12,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12),
+   STRUCT('013', b.TSL13, b.HSL13, b.KSL13, b.MSL13,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13),
+   STRUCT('014', b.TSL14, b.HSL14, b.KSL14, b.MSL14,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13 + b.TSL14,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13 + b.HSL14,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13 + b.KSL14),
+   STRUCT('015', b.TSL15, b.HSL15, b.KSL15, b.MSL15,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13 + b.TSL14 + b.TSL15,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13 + b.HSL14 + b.HSL15,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13 + b.KSL14 + b.KSL15),
+   STRUCT('016', b.TSL16, b.HSL16, b.KSL16, b.MSL16,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13 + b.TSL14 + b.TSL15 + b.TSL16,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13 + b.HSL14 + b.HSL15 + b.HSL16,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13 + b.KSL14 + b.KSL15 + b.KSL16)
+ ]) AS p
+)
+-- Stage 3: SEF16 Reference Data
+,sef16 AS (
+ SELECT
+   BUKRS AS COMP_CODE,
+   RLDNR AS ZC_LEDCO,
+   FISCVAR AS FISCVARNT,
+   CHARTACCTS AS CHRT_ACCTS,
+   RKCUR AS CURKEY_GC,
+   RHCUR AS CURKEY_LC
+ FROM `${constants.dlh_main}.erp__stn.ZBW_FI_SL_ORGATTR`
+)
+
+
+-- Stage 4: Join with Master Data
+,MasterDataJoined AS (
+ SELECT
+   u.*,
+   lc.CHRT_ACCTS,
+   lc.FISCVARNT,
+   lc.CURKEY_LC,
+   lc.CURKEY_GC,
+   per.FISCPER3,
+   per.FISCYEAR,
+   per.CALMONTH,
+   per.CALMONTH2,
+   per.CALQUART1,
+   per.CALQUARTER,
+   per.HALFYEAR1,
+   per.CALYEAR,
+   CONCAT(u.RYEAR, u.POPER) AS FISCPER_CALC,
+   '010' AS VTYPE,
+   1 AS COUNTER
+ FROM Unpivoted_zksl01t u
+ LEFT JOIN sef16 lc
+   ON u.RLDNR = lc.ZC_LEDCO AND u.RBUKRS = lc.COMP_CODE
+ LEFT JOIN `${constants.dlh_main}.reference__stn.zad_sef24` per
+   ON lc.FISCVARNT = per.FISCVARNT AND CONCAT(u.RYEAR, u.POPER) = per.FISCPER
+)
+-- Stage 5: GA_TOTAL Expansion (using CROSS JOIN UNNEST for cleaner logic)
+,Expanded_Unpivoted_zksl01t AS (
+ SELECT
+   m.* EXCEPT(RFAREA),
+   area AS RFAREA
+ FROM MasterDataJoined m
+ CROSS JOIN UNNEST(
+   CASE
+     WHEN m.RFAREA IN ('GA_CB_C', 'GA_EXB', 'GA_F_A', 'GA_G_MGMT', 'GA_MISC_INFR', 'GA_OTH_FUN', 'GA_PROJ')
+     THEN [m.RFAREA, 'GA_TOTAL']
+     ELSE [m.RFAREA]
+   END
+ ) AS area
+)
+
+
+,CV_SEFIR_VT_ZKSL01T AS (SELECT
+ 'TS' AS ZC_SLINFP,
+ RCLNT, RLDNR, RRCTY, RVERS, RYEAR, POPER, ROBJNR, COBJNR, SOBJNR, RTCUR, RUNIT,
+ DRCRK, RPMAX, RBUKRS, RACCT, RFAREA, RPRCTR, RZZREGION, RZZREPHIER, RHOART,
+ RZZKUKLA, LOGSYS, RASSC, RMVCT, ZZCUST, EPRCTR, KOKRS, ZZCONSCODE, WERKS,
+ STAGR, ZZACTIV, ZZALLOC, ZZONLINE, SBUKRS, SFAREA, SPRCTR, SZZREPHIER, SHOART,
+ ZZBOI, CHRT_ACCTS, FISCVARNT, CURKEY_LC, CURKEY_GC, FISCPER_CALC AS FISCPER,
+ VTYPE, FISCPER3, FISCYEAR, CALMONTH, CALMONTH2, CALQUART1, CALQUARTER,
+ HALFYEAR1, CALYEAR, GSBER,
+ SUM(TSL) AS TSL,
+ SUM(HSL) AS HSL,
+ SUM(KSL) AS KSL,
+ SUM(MSL) AS MSL,
+ SUM(ZK_BAL_TC) AS ZK_BAL_TC,
+ SUM(ZK_BAL_LC) AS ZK_BAL_LC,
+ SUM(ZK_BAL_GC) AS ZK_BAL_GC,
+ SUM(COUNTER) AS COUNTER,
+ MAX(recordstamp) AS ZC_RECORDSTAMP,
+ 'ZHC_SL_S2' AS SOURCE_NAME,
+ TO_HEX(MD5(CONCAT('ZHC_SL_S2|TS|', COALESCE(RLDNR,''), '|', COALESCE(RRCTY,''), '|', COALESCE(RVERS,''), '|', COALESCE(RYEAR,''), '|', COALESCE(ROBJNR,''), '|', COALESCE(COBJNR,''), '|', COALESCE(SOBJNR,''), '|', COALESCE(RTCUR,''), '|', COALESCE(RUNIT,''), '|', COALESCE(DRCRK,''), '|', COALESCE(CAST(RPMAX AS STRING),''), '|', COALESCE(POPER,'')))) AS ROW_KEY
+FROM Expanded_Unpivoted_zksl01t
+GROUP BY
+ RCLNT, RLDNR, RRCTY, RVERS, RYEAR, POPER, ROBJNR, COBJNR, SOBJNR, RTCUR, RUNIT,
+ DRCRK, RPMAX, RBUKRS, RACCT, RFAREA, RPRCTR, RZZREGION, RZZREPHIER, RHOART,
+ RZZKUKLA, LOGSYS, RASSC, RMVCT, ZZCUST, EPRCTR, KOKRS, ZZCONSCODE, WERKS,
+ STAGR, ZZACTIV, ZZALLOC, ZZONLINE, SBUKRS, SFAREA, SPRCTR, SZZREPHIER, SHOART,
+ ZZBOI, CHRT_ACCTS, FISCVARNT, CURKEY_LC, CURKEY_GC, FISCPER, VTYPE, FISCPER3,
+ FISCYEAR, CALMONTH, CALMONTH2, CALQUART1, CALQUARTER, HALFYEAR1, CALYEAR, GSBER)
+
+
+
+
+
+ABOVE IS WHAT WE IMPLEMENTED 
+BELOW IS WHAT WE GOT FROM LLM 
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----CALCULATION VIEW CV_SEFIR_VT_ZKSL01T_OPTIMIZED----------CALCULATION VIEW CV_SEFIR_VT_ZKSL01T_OPTIMIZED----------CALCULATION VIEW CV_SEFIR_VT_ZKSL01T_OPTIMIZED----------CALCULATION VIEW CV_SEFIR_VT_ZKSL01T_OPTIMIZED-------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+WITH
+-- Stage 1: Base Data with filters
+BaseData AS (
+ SELECT * FROM `dlh-dev-main.erp__stn.zksl01t`
+ WHERE RCLNT = '010'
+   AND RLDNR = 'ZA'
+   AND RRCTY IN ('0', '2')
+   AND RVERS = '001'
+),
+
+
+-- Stage 2: Unpivot with Pre-calculated Cumulative Balances
+-- The cumulative balances must be calculated from the ORIGINAL row's columns,
+-- not via window functions across unpivoted rows
+Unpivoted AS (
+ SELECT
+   b.RCLNT, b.RLDNR, b.RRCTY, b.RVERS, b.RYEAR, b.ROBJNR, b.COBJNR, b.SOBJNR,
+   b.RTCUR, b.RUNIT, b.DRCRK, b.RPMAX, b.RBUKRS, b.RACCT, b.RFAREA, b.RPRCTR,
+   b.RZZREGION, b.RZZREPHIER, b.RHOART, b.RZZKUKLA, b.LOGSYS, b.RASSC, b.RMVCT,
+   b.ZZCUST, b.EPRCTR, b.KOKRS, b.ZZCONSCODE, b.WERKS, b.STAGR, b.ZZACTIV,
+   b.ZZALLOC, b.ZZONLINE, b.ZZBOI, b.SBUKRS, b.SFAREA, b.SPRCTR, b.SZZREPHIER,
+   b.SHOART, b.GSBER, b.CSPRED, b.QSPRED,
+   b.operation_flag, b.is_deleted, b.recordstamp,
+   p.POPER,
+   p.TSL,
+   p.HSL,
+   p.KSL,
+   p.MSL,
+   p.ZK_BAL_TC,
+   p.ZK_BAL_LC,
+   p.ZK_BAL_GC
+ FROM BaseData b
+ CROSS JOIN UNNEST([
+   STRUCT('000' AS POPER, b.TSLVT AS TSL, b.HSLVT AS HSL, b.KSLVT AS KSL, b.MSLVT AS MSL,
+          b.TSLVT AS ZK_BAL_TC, b.HSLVT AS ZK_BAL_LC, b.KSLVT AS ZK_BAL_GC),
+   STRUCT('001', b.TSL01, b.HSL01, b.KSL01, b.MSL01,
+          b.TSLVT + b.TSL01, b.HSLVT + b.HSL01, b.KSLVT + b.KSL01),
+   STRUCT('002', b.TSL02, b.HSL02, b.KSL02, b.MSL02,
+          b.TSLVT + b.TSL01 + b.TSL02, b.HSLVT + b.HSL01 + b.HSL02, b.KSLVT + b.KSL01 + b.KSL02),
+   STRUCT('003', b.TSL03, b.HSL03, b.KSL03, b.MSL03,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03),
+   STRUCT('004', b.TSL04, b.HSL04, b.KSL04, b.MSL04,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04),
+   STRUCT('005', b.TSL05, b.HSL05, b.KSL05, b.MSL05,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05),
+   STRUCT('006', b.TSL06, b.HSL06, b.KSL06, b.MSL06,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06),
+   STRUCT('007', b.TSL07, b.HSL07, b.KSL07, b.MSL07,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07),
+   STRUCT('008', b.TSL08, b.HSL08, b.KSL08, b.MSL08,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08),
+   STRUCT('009', b.TSL09, b.HSL09, b.KSL09, b.MSL09,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09),
+   STRUCT('010', b.TSL10, b.HSL10, b.KSL10, b.MSL10,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10),
+   STRUCT('011', b.TSL11, b.HSL11, b.KSL11, b.MSL11,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11),
+   STRUCT('012', b.TSL12, b.HSL12, b.KSL12, b.MSL12,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12),
+   STRUCT('013', b.TSL13, b.HSL13, b.KSL13, b.MSL13,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13),
+   STRUCT('014', b.TSL14, b.HSL14, b.KSL14, b.MSL14,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13 + b.TSL14,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13 + b.HSL14,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13 + b.KSL14),
+   STRUCT('015', b.TSL15, b.HSL15, b.KSL15, b.MSL15,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13 + b.TSL14 + b.TSL15,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13 + b.HSL14 + b.HSL15,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13 + b.KSL14 + b.KSL15),
+   STRUCT('016', b.TSL16, b.HSL16, b.KSL16, b.MSL16,
+          b.TSLVT + b.TSL01 + b.TSL02 + b.TSL03 + b.TSL04 + b.TSL05 + b.TSL06 + b.TSL07 + b.TSL08 + b.TSL09 + b.TSL10 + b.TSL11 + b.TSL12 + b.TSL13 + b.TSL14 + b.TSL15 + b.TSL16,
+          b.HSLVT + b.HSL01 + b.HSL02 + b.HSL03 + b.HSL04 + b.HSL05 + b.HSL06 + b.HSL07 + b.HSL08 + b.HSL09 + b.HSL10 + b.HSL11 + b.HSL12 + b.HSL13 + b.HSL14 + b.HSL15 + b.HSL16,
+          b.KSLVT + b.KSL01 + b.KSL02 + b.KSL03 + b.KSL04 + b.KSL05 + b.KSL06 + b.KSL07 + b.KSL08 + b.KSL09 + b.KSL10 + b.KSL11 + b.KSL12 + b.KSL13 + b.KSL14 + b.KSL15 + b.KSL16)
+ ]) AS p
+),
+
+
+-- Stage 3: SEF16 Reference Data
+sef16 AS (
+ SELECT
+   BUKRS AS COMP_CODE,
+   RLDNR AS ZC_LEDCO,
+   FISCVAR AS FISCVARNT,
+   CHARTACCTS AS CHRT_ACCTS,
+   RKCUR AS CURKEY_GC,
+   RHCUR AS CURKEY_LC
+ FROM `dlh-test-main.erp__stn.ZBW_FI_SL_ORGATTR`
+),
+
+
+-- Stage 4: Join with Master Data
+MasterDataJoined AS (
+ SELECT
+   u.*,
+   lc.CHRT_ACCTS,
+   lc.FISCVARNT,
+   lc.CURKEY_LC,
+   lc.CURKEY_GC,
+   per.FISCPER3,
+   per.FISCYEAR,
+   per.CALMONTH,
+   per.CALMONTH2,
+   per.CALQUART1,
+   per.CALQUARTER,
+   per.HALFYEAR1,
+   per.CALYEAR,
+   CONCAT(u.RYEAR, u.POPER) AS FISCPER_CALC,
+   '010' AS VTYPE,
+   1 AS COUNTER
+ FROM Unpivoted u
+ LEFT JOIN sef16 lc
+   ON u.RLDNR = lc.ZC_LEDCO AND u.RBUKRS = lc.COMP_CODE
+ LEFT JOIN `dlh-dev-main.reference__stn.zad_sef24` per
+   ON lc.FISCVARNT = per.FISCVARNT AND CONCAT(u.RYEAR, u.POPER) = per.FISCPER
+),
+
+
+-- Stage 5: GA_TOTAL Expansion (using CROSS JOIN UNNEST for cleaner logic)
+ExpandedData AS (
+ SELECT
+   m.* EXCEPT(RFAREA),
+   area AS RFAREA
+ FROM MasterDataJoined m
+ CROSS JOIN UNNEST(
+   CASE
+     WHEN m.RFAREA IN ('GA_CB_C', 'GA_EXB', 'GA_F_A', 'GA_G_MGMT', 'GA_MISC_INFR', 'GA_OTH_FUN', 'GA_PROJ')
+     THEN [m.RFAREA, 'GA_TOTAL']
+     ELSE [m.RFAREA]
+   END
+ ) AS area
+)
+
+
+-- Final Aggregation
+SELECT
+ 'TS' AS ZC_SLINFP,
+ RCLNT, RLDNR, RRCTY, RVERS, RYEAR, POPER, ROBJNR, COBJNR, SOBJNR, RTCUR, RUNIT,
+ DRCRK, RPMAX, RBUKRS, RACCT, RFAREA, RPRCTR, RZZREGION, RZZREPHIER, RHOART,
+ RZZKUKLA, LOGSYS, RASSC, RMVCT, ZZCUST, EPRCTR, KOKRS, ZZCONSCODE, WERKS,
+ STAGR, ZZACTIV, ZZALLOC, ZZONLINE, SBUKRS, SFAREA, SPRCTR, SZZREPHIER, SHOART,
+ ZZBOI, CHRT_ACCTS, FISCVARNT, CURKEY_LC, CURKEY_GC, FISCPER_CALC AS FISCPER,
+ VTYPE, FISCPER3, FISCYEAR, CALMONTH, CALMONTH2, CALQUART1, CALQUARTER,
+ HALFYEAR1, CALYEAR, GSBER,
+ SUM(TSL) AS TSL,
+ SUM(HSL) AS HSL,
+ SUM(KSL) AS KSL,
+ SUM(MSL) AS MSL,
+ SUM(ZK_BAL_TC) AS ZK_BAL_TC,
+ SUM(ZK_BAL_LC) AS ZK_BAL_LC,
+ SUM(ZK_BAL_GC) AS ZK_BAL_GC,
+ SUM(COUNTER) AS COUNTER
+FROM ExpandedData
+GROUP BY
+ RCLNT, RLDNR, RRCTY, RVERS, RYEAR, POPER, ROBJNR, COBJNR, SOBJNR, RTCUR, RUNIT,
+ DRCRK, RPMAX, RBUKRS, RACCT, RFAREA, RPRCTR, RZZREGION, RZZREPHIER, RHOART,
+ RZZKUKLA, LOGSYS, RASSC, RMVCT, ZZCUST, EPRCTR, KOKRS, ZZCONSCODE, WERKS,
+ STAGR, ZZACTIV, ZZALLOC, ZZONLINE, SBUKRS, SFAREA, SPRCTR, SZZREPHIER, SHOART,
+ ZZBOI, CHRT_ACCTS, FISCVARNT, CURKEY_LC, CURKEY_GC, FISCPER, VTYPE, FISCPER3,
+ FISCYEAR, CALMONTH, CALMONTH2, CALQUART1, CALQUARTER, HALFYEAR1, CALYEAR, GSBER;
+
+
+
+
+---
+
+## 2. SQL for CV_SEFIR_VT_ZKSL01P.xml
+```sql
+-- Paste SQL here
+```
+ ,ZBW_ZKSL01P_C AS (
+ SELECT * EXCEPT(VTYPE) -- Exclude source VTYPE to avoid ambiguity with the calculated one later
+ FROM _delta_zksl01p_c
+ WHERE PARSE_TIMESTAMP('%Y%m%d%H%M%S', CAST(FINAL_TMS AS STRING)) > zksl01p_ps_ts
+)
+,Unpivoted_ZBW_ZKSL01P_C AS (
+ SELECT
+   b.* EXCEPT(
+     TSLVT, TSL01, TSL02, TSL03, TSL04, TSL05, TSL06, TSL07, TSL08, TSL09, TSL10, TSL11, TSL12, TSL13, TSL14, TSL15, TSL16,
+     HSLVT, HSL01, HSL02, HSL03, HSL04, HSL05, HSL06, HSL07, HSL08, HSL09, HSL10, HSL11, HSL12, HSL13, HSL14, HSL15, HSL16,
+     KSLVT, KSL01, KSL02, KSL03, KSL04, KSL05, KSL06, KSL07, KSL08, KSL09, KSL10, KSL11, KSL12, KSL13, KSL14, KSL15, KSL16,
+     MSLVT, MSL01, MSL02, MSL03, MSL04, MSL05, MSL06, MSL07, MSL08, MSL09, MSL10, MSL11, MSL12, MSL13, MSL14, MSL15, MSL16
+   ),
+   p.f_p3 AS FISCPER3,
+   b.RYEAR || p.f_p3 AS FISCPER,
+   p.t AS TSL,
+   p.h AS HSL,
+   p.k AS KSL,
+   p.m AS MSL
+ FROM ZBW_ZKSL01P_C b
+ CROSS JOIN UNNEST([
+   STRUCT('000' AS f_p3, TSLVT AS t, HSLVT AS h, KSLVT AS k, MSLVT AS m),
+   STRUCT('001', TSL01, HSL01, KSL01, MSL01),
+   STRUCT('002', TSL02, HSL02, KSL02, MSL02),
+   STRUCT('003', TSL03, HSL03, KSL03, MSL03),
+   STRUCT('004', TSL04, HSL04, KSL04, MSL04),
+   STRUCT('005', TSL05, HSL05, KSL05, MSL05),
+   STRUCT('006', TSL06, HSL06, KSL06, MSL06),
+   STRUCT('007', TSL07, HSL07, KSL07, MSL07),
+   STRUCT('008', TSL08, HSL08, KSL08, MSL08),
+   STRUCT('009', TSL09, HSL09, KSL09, MSL09),
+   STRUCT('010', TSL10, HSL10, KSL10, MSL10),
+   STRUCT('011', TSL11, HSL11, KSL11, MSL11),
+   STRUCT('012', TSL12, HSL12, KSL12, MSL12),
+   STRUCT('013', TSL13, HSL13, KSL13, MSL13),
+   STRUCT('014', TSL14, HSL14, KSL14, MSL14),
+   STRUCT('015', TSL15, HSL15, KSL15, MSL15),
+   STRUCT('016', TSL16, HSL16, KSL16, MSL16)
+ ]) AS p
+)
+-- select count(*) from CV_SEFIR_VT_ZKSL01P_UnpivotedData; -- 30,320,877
+,Enriched_Unpivoted_ZBW_ZKSL01P_C AS (
+ SELECT
+   u.*,
+   w.WBS_ELEMT,
+   w.WBS_ELM_EX,
+   l.CHARTACCTS AS CHRT_ACCTS,
+   l.FISCVAR AS FISCVARNT,
+   l.RHCUR AS ZZRHCUR,
+   l.RKCUR AS ZZRKCUR,
+   t.CALMONTH,
+   t.CALMONTH2,
+   t.CALQUART1,
+   t.CALQUARTER,
+   t.CALYEAR,
+   t.HALFYEAR1,
+   '020' AS VTYPE,        -- Hardcoded VTYPE per HANA XML logic
+   'PS' AS ZC_SLINFP,      -- Calculated InfoProvider Property
+   1 AS COUNTER
+ FROM Unpivoted_ZBW_ZKSL01P_C u
+ LEFT JOIN `${constants.dlh_semantic}.b__reference.zo_wbsel` w ON u.PS_PSP_PNR = w.ZC_POSNR1
+ LEFT JOIN `${constants.dlh_main}.erp__stn.ZBW_FI_SL_ORGATTR` l
+   ON u.RLDNR = l.RLDNR AND u.RBUKRS = l.BUKRS
+ LEFT JOIN `${constants.dlh_main}.reference__stn.zad_sef21` t
+   ON u.FISCPER = t.FISCPER
+)
+-- select count(*) from CV_SEFIR_VT_ZKSL01P_EnrichedData limit 100 --30,320,877
+,CV_SEFIR_VT_ZKSL01P AS (
+      SELECT
+ * EXCEPT(TSL, HSL, KSL, MSL, COUNTER),
+ SUM(TSL) AS TSL,
+ SUM(HSL) AS HSL,
+ SUM(KSL) AS KSL,
+ SUM(MSL) AS MSL,
+ SUM(COUNTER) AS COUNTER
+FROM Enriched_Unpivoted_ZBW_ZKSL01P_C
+GROUP BY ALL
+)
+
+
+ABOVE IS WHAT WE IMPLEMENTED 
+BELOW IS WHAT WE GOT FROM LLM 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P
+--------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P--CV_SEFIR_VT_ZKSL01P
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+WITH
+-- Stage 1: Initial selection from base table
+BaseData AS (
+ SELECT * EXCEPT(VTYPE) -- Exclude source VTYPE to avoid ambiguity with the calculated one later
+ FROM `dlh-prod-main.erp__stn.ZBW_ZKSL01P_C`
+),
+
+
+-- Stage 2: Optimized Unpivoting
+-- This replaces the massive UNION ALL block. It aligns TSL, HSL, KSL, and MSL for each period.
+UnpivotedData AS (
+ SELECT
+   b.* EXCEPT(
+     TSLVT, TSL01, TSL02, TSL03, TSL04, TSL05, TSL06, TSL07, TSL08, TSL09, TSL10, TSL11, TSL12, TSL13, TSL14, TSL15, TSL16,
+     HSLVT, HSL01, HSL02, HSL03, HSL04, HSL05, HSL06, HSL07, HSL08, HSL09, HSL10, HSL11, HSL12, HSL13, HSL14, HSL15, HSL16,
+     KSLVT, KSL01, KSL02, KSL03, KSL04, KSL05, KSL06, KSL07, KSL08, KSL09, KSL10, KSL11, KSL12, KSL13, KSL14, KSL15, KSL16,
+     MSLVT, MSL01, MSL02, MSL03, MSL04, MSL05, MSL06, MSL07, MSL08, MSL09, MSL10, MSL11, MSL12, MSL13, MSL14, MSL15, MSL16
+   ),
+   p.f_p3 AS FISCPER3,
+   b.RYEAR || p.f_p3 AS FISCPER,
+   p.t AS TSL,
+   p.h AS HSL,
+   p.k AS KSL,
+   p.m AS MSL
+ FROM BaseData b
+ CROSS JOIN UNNEST([
+   STRUCT('000' AS f_p3, TSLVT AS t, HSLVT AS h, KSLVT AS k, MSLVT AS m),
+   STRUCT('001', TSL01, HSL01, KSL01, MSL01),
+   STRUCT('002', TSL02, HSL02, KSL02, MSL02),
+   STRUCT('003', TSL03, HSL03, KSL03, MSL03),
+   STRUCT('004', TSL04, HSL04, KSL04, MSL04),
+   STRUCT('005', TSL05, HSL05, KSL05, MSL05),
+   STRUCT('006', TSL06, HSL06, KSL06, MSL06),
+   STRUCT('007', TSL07, HSL07, KSL07, MSL07),
+   STRUCT('008', TSL08, HSL08, KSL08, MSL08),
+   STRUCT('009', TSL09, HSL09, KSL09, MSL09),
+   STRUCT('010', TSL10, HSL10, KSL10, MSL10),
+   STRUCT('011', TSL11, HSL11, KSL11, MSL11),
+   STRUCT('012', TSL12, HSL12, KSL12, MSL12),
+   STRUCT('013', TSL13, HSL13, KSL13, MSL13),
+   STRUCT('014', TSL14, HSL14, KSL14, MSL14),
+   STRUCT('015', TSL15, HSL15, KSL15, MSL15),
+   STRUCT('016', TSL16, HSL16, KSL16, MSL16)
+ ]) AS p
+),
+
+
+-- 3. WBS MASTER DATA LOGIC (Encompassing your full logic)
+IM_FA_IP_9 AS (
+ SELECT PSPID AS WBS_ELEMT, IP_GNJHR AS APPR_YEAR, IP_PRNAMS AS PROG_DEF_S, IP_POSID AS PROG_POS
+ FROM `dlh-dev-main.erp__stn.IM_FA_IP_9`
+),
+WBS_ELEMT_ATTR AS (
+ SELECT
+   POSID AS WBS_ELEMT, PGSBR AS BUS_AREA, AEDAT AS CH_ON, PBUKR AS COMP_CODE, KOSTL AS COSTCENTER,
+   PKOKR AS CO_AREA, ERDAT AS CREATEDON, RHIER AS IM_CORPOR, ISIZE AS IM_SIZE, IZWEK AS INV_REASON,
+   PWPOS AS OBJ_CURR, WERKS AS PLANT, PSPRI AS PRIORITY, PRCTR AS PROFIT_CTR, PSPID AS PROJECT,
+   ASTNR AS PS_APPLNO, STUFE AS PS_LEVEL, PRART AS PS_PRJTYPE, VERNR AS PS_RESPNO, XSTAT AS PS_XSTAT,
+   AKSTL AS REQU_CCTR, FKSTL AS RESP_CCTR, SCOPE AS SCOPE, BWSTSYS0 AS STATUSSYS0, PSPEX AS WBS_ELM_EX,
+   ZZSTAT AS ZC_ASTAT, ZZPROJBZKA AS ZC_JBZKA, ZZPROJBZKO AS ZC_JBZKO, ZZPROJGJBI AS ZC_JGJBI,
+   ZZPROJGJVO AS ZC_JGJVO, ZZPROJKONT AS ZC_JKONT, LEFT(POSID,2) AS ZC_WBSID,
+   IF(ZZPROREF = '', POSID, ZZPROREF) AS ZC_PROREF, FKOKR AS ZC_FKOKR, AKOKR AS ZC_AKOKR,
+   USR00 AS ZC_USR00, ZZPROHIE AS ZC_PROHIE, ZZPROCAT AS ZC_PROCAT, ZZPROACTNR AS ZC_ACTNR,
+   ZZPRORECYES AS ZC_RECYES, ZZPROREQRE AS ZC_REQRE, CONCAT(PKOKR, ZZPROHIE) AS ZC_PROHCO,
+   ZZBI AS ZC_BIPRO, LEFT(ZZPROHIE,2) AS ZC_HLEVP1, SUBSTR(ZZPROHIE, 3 , 2) AS ZC_HLEVP2,
+   SUBSTR(ZZPROHIE, 5 , 2) AS ZC_HLEVP3, SUBSTR(ZZPROHIE, 7 , 2) AS ZC_HLEVP4,
+   SUBSTR(ZZPROHIE, 9 , 2) AS ZC_HLEVP5, SUBSTR(ZZPROHIE, 11 , 2) AS ZC_HLEVP6,
+   CONCAT(PKOKR, POSID) AS ZC_WBSCO, PSPNR AS ZC_POSNR1, "P1" AS SOURSYSTEM,
+   ZZALLOCATION_CODE AS ZC_COST, CONCAT(PKOKR, FKSTL) AS ZC_CONTR,
+   IF(SLWID = 'D0-0010', USR10, NULL) AS ZC_IMNONS,
+   IF(SLWID IN ('D0-0010', 'D0-0002', 'D0-0001'), USR03, NULL) AS ZC_ABTEI,
+   BWSTMEMU AS ZC_IMMEMU, USR11 AS ZC_IMAEVP, USR08 AS ZC_ANMD05, ZZPAP_PROJECT_ID AS ZC_PAPID,
+   OBJNR AS ZC_OBJNR, FUNC_AREA AS FUNC_AREA
+ FROM `dlh-dev-main.erp__stn.0WBS_ELEMT_ATTR`
+),
+WBS_ELEMT_FINAL AS (
+ SELECT
+   COALESCE(A.WBS_ELEMT, B.WBS_ELEMT) AS WBS_ELEMT,
+   A.* EXCEPT(WBS_ELEMT),
+   B.* EXCEPT(WBS_ELEMT),
+   T.TXTMD
+ FROM WBS_ELEMT_ATTR A
+ FULL OUTER JOIN IM_FA_IP_9 B ON A.WBS_ELEMT = B.WBS_ELEMT
+ LEFT JOIN `dlh-dev-main.erp__stn.0WBS_ELEMT_TEXT` T ON COALESCE(A.WBS_ELEMT, B.WBS_ELEMT) = T.POSID
+),
+
+
+-- Stage 4: Joins
+EnrichedData AS (
+ SELECT
+   u.*,
+   w.WBS_ELEMT,
+   w.WBS_ELM_EX,
+   l.CHARTACCTS AS CHRT_ACCTS,
+   l.FISCVAR AS FISCVARNT,
+   l.RHCUR AS ZZRHCUR,
+   l.RKCUR AS ZZRKCUR,
+   t.CALMONTH,
+   t.CALMONTH2,
+   t.CALQUART1,
+   t.CALQUARTER,
+   t.CALYEAR,
+   t.HALFYEAR1,
+   '020' AS VTYPE,        -- Hardcoded VTYPE per HANA XML logic
+   'PS' AS ZC_SLINFP,      -- Calculated InfoProvider Property
+   1 AS COUNTER
+ FROM UnpivotedData u
+ LEFT JOIN WBS_ELEMT_FINAL w ON u.PS_PSP_PNR = w.ZC_POSNR1
+ LEFT JOIN `dlh-test-main.erp__stn.ZBW_FI_SL_ORGATTR` l
+   ON u.RLDNR = l.RLDNR AND u.RBUKRS = l.BUKRS
+ LEFT JOIN `dlh-dev-main.reference__stn.zad_sef21` t
+   ON u.FISCPER = t.FISCPER
+)
+
+
+-- Final Aggregation Node
+SELECT
+ * EXCEPT(TSL, HSL, KSL, MSL, COUNTER),
+ SUM(TSL) AS TSL,
+ SUM(HSL) AS HSL,
+ SUM(KSL) AS KSL,
+ SUM(MSL) AS MSL,
+ SUM(COUNTER) AS COUNTER
+FROM EnrichedData
+GROUP BY ALL
+
+
+
+
+---
+
+## 3. SQL for CV_FR03_TO_REPORT_NEW.xml
+```sql
+-- Paste SQL here
+```
+/* ZC_ZZCONS/BU_CGB_FLAG/ZC_RRCTY2 -> Blocked from Enhanced -> TGK31 */
+
+
+WITH
+ base_To_Enhanced_New AS (
+   SELECT
+     CO_AREA,
+     CHRT_ACCTS,
+     ZC_LEDCO,
+     ZC_TGPLVT,
+     -- ZC_ZZCONS,
+     COMP_CODE,
+     -- BU_CGB_FLAG,
+     ZC_TGEDVC,
+     ZC_TGEDIV,
+     ZC_ZZCONS1,
+     ZC_ZZCONS2,
+     EDIV_MAP_FL,
+     CONS03_FLAG,
+     ZC_ACCNOD,
+     ZC_TGRAC,
+     ZC_SLACCT,
+     ACCOUNT,
+     ZC_TGRCC,
+     ZC_TGENVG,
+     ZC_TGVISR,
+     ZC_TGRCCV,
+     ZC_TGVRR,
+     ZC_TGRCC2,
+     ZC_TGRCC3,
+     ZC_TGRBU,
+     ZC_REPHPC,
+     ZC_TGRFA,
+     -- ZC_RRCTY2,
+     FUNC_AREA,
+     CALMONTH,
+     CALMONTH2,
+     CALQUART1,
+     CALQUARTER,
+     CALYEAR,
+     CURRENCY,
+     FISCPER,
+     FISCPER3,
+     FISCVARNT,
+     FISCYEAR,
+     HALFYEAR1,
+     ZC_SLINFP,
+     ZC_TGACC,
+     ZC_TGACCN,
+     ZC_TGACCT,
+     ZC_TGACMV,
+     ZC_TGAMTP,
+     ZC_TGBU,
+     ZC_TGCAT,
+     ZC_TGCURT,
+     ZC_TGCVTP,
+     ZC_TGDIM3,
+     ZC_TGENCS,
+     ZC_TGENT,
+     ZC_TGENTC,
+     ZC_TGFA,
+     ZC_TGMVT,
+     ZC_TGORIG,
+     ZC_TGPER,
+     ZC_TGRS,
+     ZC_TGSCEN,
+     ZC_TGSCEO,
+     ZC_TGSCTY,
+     ZC_TGSECC,
+     ZC_TGSYR,
+     ZC_TGTABN,
+     ZC_VISREG,
+     ZC_TGAMTY,
+     ZC_RRCTY,
+     ZC_REPFL,
+     ZC_TGVERD,
+     ZC_TGVERS,
+     ZK_TGAMOP,
+     ZK_TGAMOY,
+     ZK_TGAPPY,
+     ZC_RVERS
+   FROM
+     `dlh-dev-main.erp__stn.CV_FR03_TO_ENHANCED_NEW_v`
+ ),
+ base_TGK40 AS (
+   SELECT
+     FUNC_AREA,
+     ZC_MGVOVR
+   FROM
+     `dlh-dev-main.erp__stn.ZAD_TGK04_v`
+ ),
+ base_MV03 AS (
+   SELECT
+     COMP_CODE,
+     ZC_MGV01 AS ZC_MGV01_O
+   FROM
+     `dlh-dev-main.erp__stn.ZAD_MV03_v`
+ ),
+ base_MV01 AS (
+   SELECT
+     ZC_REPHPC,
+     ZC_MGV02,
+     ZC_GEO,
+     ZC_CLN06,
+     ZC_MGV00,
+     IFNULL(NULLIF(ZC_REPHPC, ''), '') AS ZC_REPHPC_AUX_R
+   FROM
+     (
+       SELECT
+         ZC_REPHPC, ZC_MGV02, ZC_GEO, ZC_CLN06, ZC_MGV00
+       FROM
+         `dlh-dev-main.erp__stn.ZAD_MV01_v`
+     )
+   WHERE
+     -- Filter Expression:
+     -- (GEO is null or empty) AND (CLN06 is null or empty) AND (REPHPC is not null and not empty)
+     (IFNULL(ZC_GEO, '') = '')
+     AND (IFNULL(ZC_CLN06, '') = '')
+     AND (IFNULL(ZC_REPHPC, '') != '')
+ ),
+ agg_MV01 AS (
+   SELECT
+     ZC_REPHPC,
+     ZC_MGV02,
+     ZC_REPHPC_AUX_R,
+     ZC_MGV00
+   FROM
+     -- Projection_3
+     base_MV01
+   GROUP BY
+     1, 2, 3, 4
+ ),
+ join_To_Enhanced_New AS (
+   SELECT
+     L.CO_AREA,
+     L.CHRT_ACCTS,
+     L.ZC_LEDCO,
+     L.ZC_TGPLVT,
+     -- L.ZC_ZZCONS,
+     L.COMP_CODE,
+     -- L.BU_CGB_FLAG,
+     L.ZC_TGEDVC,
+     L.ZC_TGEDIV,
+     L.ZC_ZZCONS1,
+     L.ZC_ZZCONS2,
+     L.EDIV_MAP_FL,
+     L.CONS03_FLAG,
+     L.ZC_ACCNOD,
+     L.ZC_TGRAC,
+     L.ZC_SLACCT,
+     L.ACCOUNT,
+     L.ZC_TGRCC,
+     L.ZC_TGENVG,
+     L.ZC_TGVISR,
+     L.ZC_TGRCCV,
+     L.ZC_TGVRR,
+     L.ZC_TGRCC2,
+     L.ZC_TGRCC3,
+     L.ZC_TGRBU,
+     L.ZC_REPHPC,
+     L.ZC_TGRFA,
+     -- L.ZC_RRCTY2,
+     L.FUNC_AREA,
+     L.CALMONTH,
+     L.CALMONTH2,
+     L.CALQUARTER,
+     L.CALQUART1,
+     L.CALYEAR,
+     L.FISCPER,
+     L.FISCPER3,
+     L.FISCVARNT,
+     L.FISCYEAR,
+     L.HALFYEAR1,
+     L.ZC_SLINFP,
+     L.ZC_TGACC,
+     L.ZC_TGACCN,
+     L.ZC_TGACCT,
+     L.ZC_TGACMV,
+     L.ZC_TGAMTP,
+     L.ZC_TGBU,
+     L.ZC_TGCAT,
+     L.ZC_TGCURT,
+     L.ZC_TGCVTP,
+     L.ZC_TGDIM3,
+     L.ZC_TGENCS,
+     L.ZC_TGENT,
+     L.ZC_TGENTC,
+     L.ZC_TGFA,
+     L.ZC_TGMVT,
+     L.ZC_TGORIG,
+     L.ZC_TGPER,
+     L.ZC_TGRS,
+     L.ZC_TGSCEN,
+     L.ZC_TGSCEO,
+     L.ZC_TGSCTY,
+     L.ZC_TGSECC,
+     L.ZC_TGSYR,
+     L.ZC_TGTABN,
+     L.ZC_VISREG,
+     L.ZC_TGAMTY,
+     L.ZC_RRCTY,
+     L.ZC_REPFL,
+     L.ZC_TGVERD,
+     L.ZC_TGVERS,
+     L.ZC_RVERS,
+     L.CURRENCY,
+     L.ZK_TGAMOP,
+     L.ZK_TGAMOY,
+     L.ZK_TGAPPY,
+     J1.ZC_MGVOVR,
+     J2.ZC_MGV01_O,
+     CASE
+       WHEN J1.ZC_MGVOVR = '0' AND L.COMP_CODE != '1650' THEN J2.ZC_MGV01_O
+       ELSE ''
+       END AS ZC_MGV01_FINAL,
+     IFNULL(NULLIF(L.ZC_REPHPC, ''), '') AS ZC_REPHPC_AUX_L,
+     J3.ZC_MGV02,
+     J3.ZC_MGV00
+   FROM
+     base_To_Enhanced_New AS L
+   LEFT OUTER JOIN
+     base_TGK40 AS J1
+     ON L.FUNC_AREA = J1.FUNC_AREA
+   LEFT OUTER JOIN
+     base_MV03 AS J2
+     ON L.COMP_CODE = J2.COMP_CODE
+   LEFT OUTER JOIN
+     agg_MV01 AS J3
+     ON IFNULL(NULLIF(L.ZC_REPHPC, ''), '') = J3.ZC_REPHPC_AUX_R
+ ),
+ agg_To_Enhanced_New AS (
+   SELECT
+     ZC_TGRCC2 AS ZC_FRCTP,
+     ZC_TGRCC3 AS ZC_FRCTPS,
+     CURRENCY,
+     ZC_RVERS,
+     ZC_TGVERS,
+     ZC_TGVERD,
+     ZC_REPFL,
+     ZC_RRCTY,
+     ZC_TGAMTY,
+     ZC_VISREG,
+     ZC_TGTABN,
+     ZC_TGSYR,
+     ZC_TGSECC,
+     ZC_TGSCTY,
+     ZC_TGSCEO,
+     ZC_TGSCEN,
+     ZC_TGRS,
+     ZC_TGPER,
+     ZC_TGORIG,
+     ZC_TGMVT,
+     ZC_TGFA,
+     ZC_TGENTC,
+     ZC_TGENT,
+     ZC_TGENCS,
+     ZC_TGDIM3,
+     ZC_TGCVTP,
+     ZC_TGCURT,
+     ZC_TGCAT,
+     ZC_TGBU,
+     ZC_TGAMTP,
+     ZC_TGACMV,
+     ZC_TGACCT,
+     ZC_TGACCN,
+     ZC_TGACC,
+     ZC_SLINFP,
+     HALFYEAR1,
+     FISCYEAR,
+     FISCVARNT,
+     FISCPER3,
+     FISCPER,
+     CALYEAR,
+     CALQUART1,
+     CALQUARTER,
+     CALMONTH2,
+     CALMONTH,
+     FUNC_AREA,
+     -- ZC_RRCTY2,
+     ZC_TGRFA,
+     ZC_REPHPC,
+     ZC_TGRBU,
+     ZC_TGRCC3,
+     ZC_TGRCC2,
+     ZC_TGVRR,
+     ZC_TGRCCV,
+     ZC_TGVISR,
+     ZC_TGENVG,
+     ZC_TGRCC,
+     ACCOUNT,
+     ZC_SLACCT,
+     ZC_TGRAC,
+     ZC_ACCNOD,
+     CONS03_FLAG,
+     EDIV_MAP_FL,
+     ZC_ZZCONS2,
+     ZC_ZZCONS1,
+     ZC_TGEDIV,
+     ZC_TGEDVC,
+     -- BU_CGB_FLAG,
+     COMP_CODE,
+     -- ZC_ZZCONS,
+     ZC_TGPLVT,
+     ZC_LEDCO,
+     CHRT_ACCTS,
+     CO_AREA,
+     ZC_MGV00,
+     ZC_MGV01_O,
+     ZC_MGVOVR,
+     ZC_MGV01_FINAL,
+     ZC_MGV02,
+     SUM(ZK_TGAPPY) AS ZK_TGAPPY,
+     SUM(ZK_TGAMOY) AS ZK_TGAMOY,
+     SUM(ZK_TGAMOP) AS ZK_TGAMOP
+   FROM
+     join_To_Enhanced_New
+   GROUP BY
+     ZC_FRCTP,
+     ZC_FRCTPS,
+     CURRENCY,
+     ZC_RVERS,
+     ZC_TGVERS,
+     ZC_TGVERD,
+     ZC_REPFL,
+     ZC_RRCTY,
+     ZC_TGAMTY,
+     ZC_VISREG,
+     ZC_TGTABN,
+     ZC_TGSYR,
+     ZC_TGSECC,
+     ZC_TGSCTY,
+     ZC_TGSCEO,
+     ZC_TGSCEN,
+     ZC_TGRS,
+     ZC_TGPER,
+     ZC_TGORIG,
+     ZC_TGMVT,
+     ZC_TGFA,
+     ZC_TGENTC,
+     ZC_TGENT,
+     ZC_TGENCS,
+     ZC_TGDIM3,
+     ZC_TGCVTP,
+     ZC_TGCURT,
+     ZC_TGCAT,
+     ZC_TGBU,
+     ZC_TGAMTP,
+     ZC_TGACMV,
+     ZC_TGACCT,
+     ZC_TGACCN,
+     ZC_TGACC,
+     ZC_SLINFP,
+     HALFYEAR1,
+     FISCYEAR,
+     FISCVARNT,
+     FISCPER3,
+     FISCPER,
+     CALYEAR,
+     CALQUART1,
+     CALQUARTER,
+     CALMONTH2,
+     CALMONTH,
+     FUNC_AREA,
+     -- ZC_RRCTY2,
+     ZC_TGRFA,
+     ZC_REPHPC,
+     ZC_TGRBU,
+     ZC_TGRCC3,
+     ZC_TGRCC2,
+     ZC_TGVRR,
+     ZC_TGRCCV,
+     ZC_TGVISR,
+     ZC_TGENVG,
+     ZC_TGRCC,
+     ACCOUNT,
+     ZC_SLACCT,
+     ZC_TGRAC,
+     ZC_ACCNOD,
+     CONS03_FLAG,
+     EDIV_MAP_FL,
+     ZC_ZZCONS2,
+     ZC_ZZCONS1,
+     ZC_TGEDIV,
+     ZC_TGEDVC,
+     -- BU_CGB_FLAG,
+     COMP_CODE,
+     -- ZC_ZZCONS,
+     ZC_TGPLVT,
+     ZC_LEDCO,
+     CHRT_ACCTS,
+     CO_AREA,
+     ZC_MGV00,
+     ZC_MGV01_O,
+     ZC_MGVOVR,
+     ZC_MGV01_FINAL,
+     ZC_MGV02
+
+
+
+
+
+
+ )
+SELECT * FROM agg_To_Enhanced_New
+
+
+
+
+
+
+---
+
+## 4. SQL for CV_SEFIR_VT_ZKSL01A_PAR_1.xml
+```sql
+-- Paste SQL here
+```
+,zksl01a AS (
+ SELECT
+   *,
+   1 as COUNTER,
+   CAST(WSL AS FLOAT64) as ZWSL17
+ FROM _delta_zksl01a
+ WHERE RLDNR = 'ZA'
+   AND RVERS = '001'
+   AND RRCTY IN ('0', '2')
+   AND CAST(RYEAR AS INT64) >= 2021
+   AND recordstamp > zksl01a_ls_ts
+)
+-- select count(*) from CV_SEFIR_VT_ZKSL01A_PAR_1_LineItems; --27
+,ZBW_FI_SL_ORGATTR AS (
+ SELECT
+   RLDNR AS ZC_LEDCO, -- Source: /BIC/ZC_LEDCO
+   BUKRS AS COMP_CODE,
+   FISCVAR AS FISCVARNT,
+   CHARTACCTS AS CHRT_ACCTS,
+   RHCUR AS CURKEY_LC,
+   RKCUR AS CURKEY_GC
+ FROM `${constants.dlh_main}.erp__stn.ZBW_FI_SL_ORGATTR`--sef16 is actually coming from this
+)
+-- select count(*) from CV_SEFIR_VT_ZKSL01A_PAR_1_CompCodeAttrs --10505
+,zksl01a_sef16 AS (
+ SELECT
+   li.*,
+   cc.FISCVARNT,
+   cc.CHRT_ACCTS,
+   cc.`CURKEY_LC`,
+   (li.RYEAR || li.POPER) as FISCPER,
+   li.POPER as FISCPER3,
+   li.RYEAR as FISCYEAR_CALC,
+   'P1' as SOURSYSTEM,
+   li.BUDAT as CALDAY,
+   '010' as VTYPE,
+   'EUR' as CURKEY_GC
+ FROM zksl01a li
+ LEFT OUTER JOIN ZBW_FI_SL_ORGATTR cc
+   ON li.RLDNR = cc.ZC_LEDCO
+   AND li.RBUKRS = cc.COMP_CODE
+)
+-- select count(*) from CV_SEFIR_VT_ZKSL01A_PAR_1_LineItemsWithCC --27
+,zad_sef23 AS (
+ SELECT
+   `CALDAY`,
+   `CALMONTH`,
+   `CALMONTH2`,
+   `CALQUART1`,
+   `CALQUARTER`,
+   `CALWEEK`,
+   `CALYEAR`,
+   `HALFYEAR1`,
+   `WEEKDAY1`
+ FROM `${constants.dlh_main}.reference__stn.zad_sef23`
+)
+-- select count(*) from CV_SEFIR_VT_ZKSL01A_PAR_1_TimeChars; --22,280
+,zksl01a_sef16_sef23 AS (
+ SELECT
+   base.*,
+   tc.`CALMONTH`,
+   tc.`CALMONTH2`,
+   tc.`CALQUART1`,
+   tc.`CALQUARTER`,
+   tc.`CALWEEK`,
+   tc.`CALYEAR`,
+   tc.`HALFYEAR1`,
+   tc.`WEEKDAY1`
+ FROM zksl01a_sef16 base
+ INNER JOIN zad_sef23 tc
+   ON base.CALDAY = tc.`CALDAY`
+)
+-- select count(*) from CV_SEFIR_VT_ZKSL01A_PAR_1_JoinedData --27
+,CV_SEFIR_VT_ZKSL01A_PAR_1 AS (
+ SELECT
+ 'LS' as ZC_SLINFP,
+ -- Dimensions
+ FISCVARNT,
+ CHRT_ACCTS,
+ FISCPER,
+ SOURSYSTEM,
+ FISCPER3,
+ FISCYEAR_CALC as FISCYEAR,
+ CALDAY,
+ VTYPE,
+ RCLNT,
+ GL_SIRID,
+ RLDNR,
+ RRCTY,
+ RVERS,
+ RYEAR,
+ RTCUR,
+ RUNIT,
+ DRCRK,
+ POPER,
+ DOCCT,
+ DOCNR,
+ DOCLN,
+ RBUKRS,
+ RACCT,
+ RFAREA,
+ RPRCTR,
+ RZZREGION,
+ RZZREPHIER,
+ RHOART,
+ RZZKUKLA,
+ LOGSYS,
+ RASSC,
+ RMVCT,
+ ZZCUST,
+ EPRCTR,
+ KOKRS,
+ ZZCONSCODE,
+ WERKS,
+ STAGR,
+ ZZACTIV,
+ ZZALLOC,
+ ZZONLINE,
+ SBUKRS,
+ SFAREA,
+ SPRCTR,
+ SZZREPHIER,
+ SHOART,
+ SGTXT,
+ DOCTY,
+ ACTIV,
+ BUDAT,
+ WSDAT,
+ REFRYEAR,
+ REFDOCNR,
+ REFDOCLN,
+ REFDOCCT,
+ REFACTIV,
+ CPUDT,
+ CPUTM,
+ USNAM,
+ AWTYP,
+ AWORG,
+ RWCUR,
+ BELNR,
+ BUZEI,
+ LINETYPE,
+ XSPLITMOD,
+ GSBER,
+ KOSTL,
+ BLDAT,
+ LSTAR,
+ AUFNR,
+ AUFPL,
+ ANLN1,
+ ANLN2,
+ BWKEY,
+ BWTAR,
+ ANBWA,
+ KUNNR,
+ LIFNR,
+ EBELN,
+ EBELP,
+ ERKRS,
+ PAOBJNR,
+ PASUBNR,
+ PS_PSP_PNR,
+ KDAUF,
+ KDPOS,
+ FKART,
+ VKORG,
+ VTWEG,
+ AUBEL,
+ AUPOS,
+ SPART,
+ VBELN,
+ POSNR,
+ VKGRP,
+ VKBUR,
+ STFLG,
+ GRTYP,
+ VALUT,
+ AWREF_REV,
+ AWORG_REV,
+ BWART,
+ BLART,
+ MATNR,
+ ZZBOI,
+ `CURKEY_LC` as ZZRHCUR,
+ CURKEY_GC as ZZRKCUR,
+ ZZMHIER,
+ `CALMONTH`,
+ `CALMONTH2`,
+ `CALQUART1`,
+ `CALQUARTER`,
+ `CALWEEK`,
+ `CALYEAR`,
+ `HALFYEAR1`,
+ `WEEKDAY1`,
+ -- Measures
+ SUM(TSL) as TSL,
+ SUM(HSL) as HSL,
+ SUM(KSL) as KSL,
+ SUM(MSL) as MSL,
+ SUM(COUNTER) as COUNTER,
+ SUM(ZWSL17) as ZWSL17,
+ -- MAX(recordstamp) so the LS watermark column is available without breaking GROUP BY ALL uniqueness
+ MAX(recordstamp) as recordstamp
+FROM zksl01a_sef16_sef23
+GROUP BY ALL
+)
+
+
+
+
+
+
+
+ABOVE IS WHAT WE IMPLEMENTED 
+BELOW IS WHAT WE GOT FROM LLM 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+ -------CALCULATION VIEW CV_SEFIR_VT_ZKSL01A_PAR_1----------------CALCULATION VIEW CV_SEFIR_VT_ZKSL01A_PAR_1----------------CALCULATION VIEW CV_SEFIR_VT_ZKSL01A_PAR_1----------
+ -------CALCULATION VIEW CV_SEFIR_VT_ZKSL01A_PAR_1----------------CALCULATION VIEW CV_SEFIR_VT_ZKSL01A_PAR_1----------------CALCULATION VIEW CV_SEFIR_VT_ZKSL01A_PAR_1----------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-- Variables I_FISCYEAR and I_CO_AREA are handled via the WHERE clause.
+-- DECLARE the variables at the start
+DECLARE I_FISCYEAR STRING DEFAULT '2018';
+DECLARE I_CO_AREA STRING DEFAULT '1640';
+
+
+WITH
+-- Step 1: Line Items Table Projection--NO UNION ALL so i can just use .* for simple query to begin with
+LineItems AS (
+ SELECT
+   *,
+   1 as COUNTER,
+   CAST(WSL AS FLOAT64) as ZWSL17
+ FROM `dlh-dev-main.erp__stn.zksl01a`
+ WHERE RLDNR = 'ZA'
+   AND RVERS = '001'
+   AND RRCTY IN ('0', '2')
+   -- Variable Injection here:
+   AND RYEAR = I_FISCYEAR 
+   AND KOKRS = I_CO_AREA 
+),
+-- Step 2: Company Code Attributes (P_COMPCODE_Attrs)
+CompCodeAttrs AS (
+ SELECT
+   RLDNR AS ZC_LEDCO, -- Source: /BIC/ZC_LEDCO
+   BUKRS AS COMP_CODE,
+   FISCVAR AS FISCVARNT,
+   CHARTACCTS AS CHRT_ACCTS,
+   RHCUR AS CURKEY_LC,
+   RKCUR AS CURKEY_GC
+ FROM `dlh-test-main.erp__stn.ZBW_FI_SL_ORGATTR`--sef16 is actually coming from this
+),
+
+
+-- Step 3: Join Line Items and Company Code (J_x10_LItems_CompCode)
+LineItemsWithCC AS (
+ SELECT
+   li.*,
+   cc.FISCVARNT,
+   cc.CHRT_ACCTS,
+   cc.`CURKEY_LC`,
+   (li.RYEAR || li.POPER) as FISCPER,
+   li.POPER as FISCPER3,
+   li.RYEAR as FISCYEAR_CALC,
+   'P1' as SOURSYSTEM,
+   li.BUDAT as CALDAY,
+   '010' as VTYPE,
+   'EUR' as CURKEY_GC
+ FROM LineItems li
+ LEFT OUTER JOIN CompCodeAttrs cc
+   ON li.RLDNR = cc.ZC_LEDCO
+   AND li.RBUKRS = cc.COMP_CODE
+),
+
+
+-- Step 4: Time Characteristics (P_CALx_TIMECHARS)
+TimeChars AS (
+ SELECT
+   `CALDAY`,
+   `CALMONTH`,
+   `CALMONTH2`,
+   `CALQUART1`,
+   `CALQUARTER`,
+   `CALWEEK`,
+   `CALYEAR`,
+   `HALFYEAR1`,
+   `WEEKDAY1`
+ FROM `dlh-dev-main.reference__stn.zad_sef23`
+),
+
+
+-- Step 5: Join with Time Characteristics (J_CALx_TIMECHARS)
+JoinedData AS (
+ SELECT
+   base.*,
+   tc.`CALMONTH`,
+   tc.`CALMONTH2`,
+   tc.`CALQUART1`,
+   tc.`CALQUARTER`,
+   tc.`CALWEEK`,
+   tc.`CALYEAR`,
+   tc.`HALFYEAR1`,
+   tc.`WEEKDAY1`
+ FROM LineItemsWithCC base
+ INNER JOIN TimeChars tc
+   ON base.CALDAY = tc.`CALDAY`
+)
+
+
+-- Step 6: Final Aggregation
+SELECT
+ 'LS' as ZC_SLINFP,
+ -- Dimensions
+ FISCVARNT,
+ CHRT_ACCTS,
+ FISCPER,
+ SOURSYSTEM,
+ FISCPER3,
+ FISCYEAR_CALC as FISCYEAR,
+ CALDAY,
+ VTYPE,
+ RCLNT,
+ GL_SIRID,
+ RLDNR,
+ RRCTY,
+ RVERS,
+ RYEAR,
+ RTCUR,
+ RUNIT,
+ DRCRK,
+ POPER,
+ DOCCT,
+ DOCNR,
+ DOCLN,
+ RBUKRS,
+ RACCT,
+ RFAREA,
+ RPRCTR,
+ RZZREGION,
+ RZZREPHIER,
+ RHOART,
+ RZZKUKLA,
+ LOGSYS,
+ RASSC,
+ RMVCT,
+ ZZCUST,
+ EPRCTR,
+ KOKRS,
+ ZZCONSCODE,
+ WERKS,
+ STAGR,
+ ZZACTIV,
+ ZZALLOC,
+ ZZONLINE,
+ SBUKRS,
+ SFAREA,
+ SPRCTR,
+ SZZREPHIER,
+ SHOART,
+ SGTXT,
+ DOCTY,
+ ACTIV,
+ BUDAT,
+ WSDAT,
+ REFRYEAR,
+ REFDOCNR,
+ REFDOCLN,
+ REFDOCCT,
+ REFACTIV,
+ CPUDT,
+ CPUTM,
+ USNAM,
+ AWTYP,
+ AWORG,
+ RWCUR,
+ BELNR,
+ BUZEI,
+ LINETYPE,
+ XSPLITMOD,
+ GSBER,
+ KOSTL,
+ BLDAT,
+ LSTAR,
+ AUFNR,
+ AUFPL,
+ ANLN1,
+ ANLN2,
+ BWKEY,
+ BWTAR,
+ ANBWA,
+ KUNNR,
+ LIFNR,
+ EBELN,
+ EBELP,
+ ERKRS,
+ PAOBJNR,
+ PASUBNR,
+ PS_PSP_PNR,
+ KDAUF,
+ KDPOS,
+ FKART,
+ VKORG,
+ VTWEG,
+ AUBEL,
+ AUPOS,
+ SPART,
+ VBELN,
+ POSNR,
+ VKGRP,
+ VKBUR,
+ STFLG,
+ GRTYP,
+ VALUT,
+ AWREF_REV,
+ AWORG_REV,
+ BWART,
+ BLART,
+ MATNR,
+ ZZBOI,
+ `CURKEY_LC` as ZZRHCUR,
+ CURKEY_GC as ZZRKCUR,
+ ZZMHIER,
+ `CALMONTH`,
+ `CALMONTH2`,
+ `CALQUART1`,
+ `CALQUARTER`,
+ `CALWEEK`,
+ `CALYEAR`,
+ `HALFYEAR1`,
+ `WEEKDAY1`,
+ -- Measures
+ SUM(TSL) as TSL,
+ SUM(HSL) as HSL,
+ SUM(KSL) as KSL,
+ SUM(MSL) as MSL,
+ SUM(COUNTER) as COUNTER,
+ SUM(ZWSL17) as ZWSL17
+FROM JoinedData
+GROUP BY ALL
+
+
+

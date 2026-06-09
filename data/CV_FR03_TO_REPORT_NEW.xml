@@ -1,0 +1,2185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View:ColumnView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Param="http://www.sap.com/ndb/ViewModelParameter.ecore" xmlns:Type="http://www.sap.com/ndb/DataModelType.ecore" xmlns:View="http://www.sap.com/ndb/ViewModelView.ecore" schemaVersion="2.3" name="CV_FR03_TO_REPORT_NEW" dataCategory="CUBE" hierarchiesSQLEnabled="false" defaultNode="#/0/Aggregation" clientDependent="true" applyPrivilegeType="NONE" translationRelevant="false">
+  <endUserTexts label="CV_FR03_TO_REPORT_NEW"/>
+  <origin/>
+  <parameter name="I_TGAMTY" mandatory="true" multipleSelections="true">
+    <endUserTexts label="I_TGAMTY"/>
+    <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="10"/>
+    <defaultValue xsi:nil="true"/>
+    <defaultRange including="true" lowValue="O1"/>
+    <defaultRange including="true" lowValue="C1"/>
+  </parameter>
+  <parameter name="I_SYEAR" mandatory="false" multipleSelections="true">
+    <endUserTexts label="I_SYEAR"/>
+    <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4"/>
+    <defaultValue></defaultValue>
+    <defaultRange lowValue=""/>
+  </parameter>
+  <parameter name="I_RVERS" mandatory="false" multipleSelections="true">
+    <endUserTexts label="I_RVERS"/>
+    <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="3"/>
+    <defaultValue xsi:nil="true"/>
+    <defaultRange including="true" lowValue="001"/>
+    <defaultRange including="true" lowValue="009"/>
+    <defaultRange including="true" lowValue="10A"/>
+    <defaultRange including="true" lowValue="11A"/>
+    <defaultRange including="true" lowValue="11B"/>
+    <defaultRange including="true" lowValue="A01"/>
+    <defaultRange including="true" lowValue="Z01"/>
+  </parameter>
+  <parameter name="I_FISCYEAR" mandatory="false" multipleSelections="true">
+    <endUserTexts label="I_FISCYEAR"/>
+    <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4"/>
+    <defaultValue></defaultValue>
+    <defaultRange lowValue=""/>
+  </parameter>
+  <parameter name="I_SLINFP" mandatory="true" multipleSelections="true">
+    <endUserTexts label="I_SLINFP"/>
+    <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="2"/>
+    <defaultValue>TO</defaultValue>
+    <defaultRange lowValue="TO"/>
+  </parameter>
+  <parameter xsi:type="Param:DerivedParameter" name="SP_SYEAR" mandatory="false" multipleSelections="false">
+    <endUserTexts label="SP_SYEAR"/>
+    <inlineType name="CHAR" primitiveType="CHAR"/>
+    <defaultValue xsi:nil="true"/>
+    <derivationRule inputEnabled="false">
+      <procedureName>zbw.fi.fr::SP_FR_UTIL_DEFAULT_YEAR</procedureName>
+      <scriptObject>#/1</scriptObject>
+      <parameterMapping xsi:type="Param:ParameterMapping" parameterNameOtherView="I_YEAR" parameterName="I_SYEAR"/>
+    </derivationRule>
+  </parameter>
+  <parameter xsi:type="Param:DerivedParameter" name="SP_FISCYEAR" mandatory="false" multipleSelections="false">
+    <endUserTexts label="SP_FISCYEAR"/>
+    <inlineType name="CHAR" primitiveType="CHAR"/>
+    <defaultValue xsi:nil="true"/>
+    <derivationRule inputEnabled="false">
+      <procedureName>zbw.fi.fr::SP_FR_UTIL_DEFAULT_YEAR</procedureName>
+      <scriptObject>#/1</scriptObject>
+      <parameterMapping xsi:type="Param:ParameterMapping" parameterNameOtherView="I_YEAR" parameterName="I_FISCYEAR"/>
+    </derivationRule>
+  </parameter>
+  <executionHints preferredEngine="SQL" propagateInstantiation="true"/>
+  <viewNode xsi:type="View:Projection" name="P_TO_ENHANCED">
+    <endUserTexts label=" "/>
+    <element name="CO_AREA">
+      <endUserTexts label="CO_AREA"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_LEDCO">
+      <endUserTexts label="ZC_LEDCO"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGPLVT">
+      <endUserTexts label="ZC_TGPLVT"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS">
+      <endUserTexts label="ZC_ZZCONS"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="COMP_CODE">
+      <endUserTexts label="COMP_CODE"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BU_CGB_FLAG">
+      <endUserTexts label="BU_CGB_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGEDVC">
+      <endUserTexts label="ZC_TGEDVC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDIV">
+      <endUserTexts label="ZC_TGEDIV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS1">
+      <endUserTexts label="ZC_ZZCONS1"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS2">
+      <endUserTexts label="ZC_ZZCONS2"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EDIV_MAP_FL">
+      <endUserTexts label="EDIV_MAP_FL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="CONS03_FLAG">
+      <endUserTexts label="CONS03_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_ACCNOD">
+      <endUserTexts label="ZC_ACCNOD"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGRAC">
+      <endUserTexts label="ZC_TGRAC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_SLACCT">
+      <endUserTexts label="ZC_SLACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ACCOUNT">
+      <endUserTexts label="ZC_REPHPC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGENVG">
+      <endUserTexts label="Tagetik Entity VG"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGVISR">
+      <endUserTexts label="TGK VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCCV">
+      <endUserTexts label="Company Code/VIS Region"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVRR">
+      <endUserTexts label="TGK DM VIS Region Reversal"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC2">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC3">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRBU">
+      <endUserTexts label="(Rep.Unit) Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_REPHPC">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRFA">
+      <endUserTexts label="(Rep.Unit) Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY2">
+      <endUserTexts label="Record Type"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="FUNC_AREA">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="CALMONTH">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="CALMONTH2">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CALQUART1">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="CALQUARTER">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="CALYEAR">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CURRENCY">
+      <endUserTexts label="Currency key"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="FISCPER">
+      <endUserTexts label="Fiscal year / period"/>
+      <inlineType primitiveType="NVARCHAR" length="7" precision="7" scale="0"/>
+    </element>
+    <element name="FISCPER3">
+      <endUserTexts label="Posting period"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="FISCVARNT">
+      <endUserTexts label="Fiscal year variant"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="FISCYEAR">
+      <endUserTexts label="Fiscal year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="HALFYEAR1">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_SLINFP">
+      <endUserTexts label="InfoProvider Property"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGACC">
+      <endUserTexts label="TGK Account"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGACCN">
+      <endUserTexts label="TGK Account Nature"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACCT">
+      <endUserTexts label="TGK Account Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACMV">
+      <endUserTexts label="TGK Account/Movement"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTP">
+      <endUserTexts label="TGK Amount Type"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGBU">
+      <endUserTexts label="TGK Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGCAT">
+      <endUserTexts label="TGK Category"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGCURT">
+      <endUserTexts label="Currency Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGCVTP">
+      <endUserTexts label="TGK Conv. Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGDIM3">
+      <endUserTexts label="TGK YEP Details"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENCS">
+      <endUserTexts label="TGK Entity CTP Segment"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENT">
+      <endUserTexts label="TGK Entity"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENTC">
+      <endUserTexts label="TGK Entity CTP"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGFA">
+      <endUserTexts label="TGK Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGMVT">
+      <endUserTexts label="TGK Movement Type"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGORIG">
+      <endUserTexts label="TGK Origin"/>
+      <inlineType primitiveType="NVARCHAR" length="80" precision="80" scale="0"/>
+    </element>
+    <element name="ZC_TGPER">
+      <endUserTexts label="TGK Period"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGRS">
+      <endUserTexts label="Data Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEN">
+      <endUserTexts label="TGK Scenario"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEO">
+      <endUserTexts label="TGK Scenario (orig.)"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGSCTY">
+      <endUserTexts label="TGK Scenario Type"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSECC">
+      <endUserTexts label="TGK Security Code"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSYR">
+      <endUserTexts label="Submission Year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGTABN">
+      <endUserTexts label="TGK Table Name"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_VISREG">
+      <endUserTexts label="VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTY">
+      <endUserTexts label="ZC_TGAMTY"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY">
+      <endUserTexts label="ZC_RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_REPFL">
+      <endUserTexts label="ZC_REPFL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGVERD">
+      <endUserTexts label="ZC_TGVERD"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVERS">
+      <endUserTexts label="TGK Version"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZK_TGAMOP">
+      <endUserTexts label="ZK_TGAMOP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAMOY">
+      <endUserTexts label="ZK_TGAMOY"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAPPY">
+      <endUserTexts label="Amount (YTD) PP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZC_RVERS">
+      <endUserTexts label="Version (Ledger)"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <input>
+      <entity>#/0/zbw.fi.fr.fr03::CV_FR03_TO_ENHANCED_NEW</entity>
+      <mapping xsi:type="Type:ElementMapping" targetName="CO_AREA" sourceName="CO_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_LEDCO" sourceName="ZC_LEDCO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPLVT" sourceName="ZC_TGPLVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS" sourceName="ZC_ZZCONS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COMP_CODE" sourceName="COMP_CODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BU_CGB_FLAG" sourceName="BU_CGB_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDVC" sourceName="ZC_TGEDVC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDIV" sourceName="ZC_TGEDIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS1" sourceName="ZC_ZZCONS1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS2" sourceName="ZC_ZZCONS2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EDIV_MAP_FL" sourceName="EDIV_MAP_FL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CONS03_FLAG" sourceName="CONS03_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ACCNOD" sourceName="ZC_ACCNOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRAC" sourceName="ZC_TGRAC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLACCT" sourceName="ZC_SLACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACCOUNT" sourceName="ACCOUNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC" sourceName="ZC_TGRCC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENVG" sourceName="ZC_TGENVG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVISR" sourceName="ZC_TGVISR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCCV" sourceName="ZC_TGRCCV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVRR" sourceName="ZC_TGVRR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC2" sourceName="ZC_TGRCC2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC3" sourceName="ZC_TGRCC3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRBU" sourceName="ZC_TGRBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPHPC" sourceName="ZC_REPHPC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRFA" sourceName="ZC_TGRFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY2" sourceName="ZC_RRCTY2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FUNC_AREA" sourceName="FUNC_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH" sourceName="CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH2" sourceName="CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUART1" sourceName="CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUARTER" sourceName="CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALYEAR" sourceName="CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CURRENCY" sourceName="CURRENCY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER" sourceName="FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER3" sourceName="FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCYEAR" sourceName="FISCYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HALFYEAR1" sourceName="HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLINFP" sourceName="ZC_SLINFP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACC" sourceName="ZC_TGACC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCN" sourceName="ZC_TGACCN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCT" sourceName="ZC_TGACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACMV" sourceName="ZC_TGACMV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTP" sourceName="ZC_TGAMTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGBU" sourceName="ZC_TGBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCAT" sourceName="ZC_TGCAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCURT" sourceName="ZC_TGCURT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCVTP" sourceName="ZC_TGCVTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGDIM3" sourceName="ZC_TGDIM3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENCS" sourceName="ZC_TGENCS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENT" sourceName="ZC_TGENT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENTC" sourceName="ZC_TGENTC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGFA" sourceName="ZC_TGFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGMVT" sourceName="ZC_TGMVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGORIG" sourceName="ZC_TGORIG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPER" sourceName="ZC_TGPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRS" sourceName="ZC_TGRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEN" sourceName="ZC_TGSCEN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEO" sourceName="ZC_TGSCEO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCTY" sourceName="ZC_TGSCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSECC" sourceName="ZC_TGSECC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSYR" sourceName="ZC_TGSYR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGTABN" sourceName="ZC_TGTABN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_VISREG" sourceName="ZC_VISREG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTY" sourceName="ZC_TGAMTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY" sourceName="ZC_RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPFL" sourceName="ZC_REPFL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERD" sourceName="ZC_TGVERD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERS" sourceName="ZC_TGVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOP" sourceName="ZK_TGAMOP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOY" sourceName="ZK_TGAMOY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAPPY" sourceName="ZK_TGAPPY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RVERS" sourceName="ZC_RVERS"/>
+      <parameterMapping xsi:type="Param:ParameterMapping" parameterNameOtherView="I_TGAMTY" parameterName="I_TGAMTY"/>
+      <parameterMapping xsi:type="Param:ParameterMapping" parameterNameOtherView="I_RVERS" parameterName="I_RVERS"/>
+      <parameterMapping xsi:type="Param:ParameterMapping" parameterNameOtherView="I_SLINFP" parameterName="I_SLINFP"/>
+      <parameterMapping xsi:type="Param:ParameterMapping" parameterNameOtherView="I_SYEAR" parameterName="SP_SYEAR"/>
+      <parameterMapping xsi:type="Param:ParameterMapping" parameterNameOtherView="I_FISCYEAR" parameterName="SP_FISCYEAR"/>
+    </input>
+    <layout xCoordinate="22" yCoordinate="453" width="249" height="64" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:Projection" name="Projection_1">
+    <endUserTexts label=" "/>
+    <element name="0FUNC_AREA">
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_MGVOVR">
+      <endUserTexts label="Managerial View Override"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <input>
+      <entity>#/0/system-local.bw.bw2hana::ZAD_TGK04</entity>
+      <mapping xsi:type="Type:ElementMapping" targetName="0FUNC_AREA" sourceName="0FUNC_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGVOVR" sourceName="ZC_MGVOVR"/>
+    </input>
+    <layout xCoordinate="285" yCoordinate="453" width="-1" height="-1" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:JoinNode" name="Join_1" joinOrder="OUTSIDE_IN">
+    <endUserTexts label=" "/>
+    <element name="CO_AREA">
+      <endUserTexts label="CO_AREA"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_LEDCO">
+      <endUserTexts label="ZC_LEDCO"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGPLVT">
+      <endUserTexts label="ZC_TGPLVT"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS">
+      <endUserTexts label="ZC_ZZCONS"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="COMP_CODE">
+      <endUserTexts label="COMP_CODE"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BU_CGB_FLAG">
+      <endUserTexts label="BU_CGB_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGEDVC">
+      <endUserTexts label="ZC_TGEDVC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDIV">
+      <endUserTexts label="ZC_TGEDIV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS1">
+      <endUserTexts label="ZC_ZZCONS1"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS2">
+      <endUserTexts label="ZC_ZZCONS2"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EDIV_MAP_FL">
+      <endUserTexts label="EDIV_MAP_FL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="CONS03_FLAG">
+      <endUserTexts label="CONS03_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_ACCNOD">
+      <endUserTexts label="ZC_ACCNOD"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGRAC">
+      <endUserTexts label="ZC_TGRAC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_SLACCT">
+      <endUserTexts label="ZC_SLACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ACCOUNT">
+      <endUserTexts label="ZC_REPHPC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGENVG">
+      <endUserTexts label="Tagetik Entity VG"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGVISR">
+      <endUserTexts label="TGK VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCCV">
+      <endUserTexts label="Company Code/VIS Region"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVRR">
+      <endUserTexts label="TGK DM VIS Region Reversal"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC2">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC3">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRBU">
+      <endUserTexts label="(Rep.Unit) Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_REPHPC">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRFA">
+      <endUserTexts label="(Rep.Unit) Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY2">
+      <endUserTexts label="Record Type"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="FUNC_AREA">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="CALMONTH">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="CALMONTH2">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CALQUARTER">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="CALQUART1">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="CALYEAR">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="FISCPER">
+      <endUserTexts label="Fiscal year / period"/>
+      <inlineType primitiveType="NVARCHAR" length="7" precision="7" scale="0"/>
+    </element>
+    <element name="FISCPER3">
+      <endUserTexts label="Posting period"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="FISCVARNT">
+      <endUserTexts label="Fiscal year variant"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="FISCYEAR">
+      <endUserTexts label="Fiscal year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="HALFYEAR1">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_SLINFP">
+      <endUserTexts label="InfoProvider Property"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGACC">
+      <endUserTexts label="TGK Account"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGACCN">
+      <endUserTexts label="TGK Account Nature"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACCT">
+      <endUserTexts label="TGK Account Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACMV">
+      <endUserTexts label="TGK Account/Movement"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTP">
+      <endUserTexts label="TGK Amount Type"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGBU">
+      <endUserTexts label="TGK Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGCAT">
+      <endUserTexts label="TGK Category"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGCURT">
+      <endUserTexts label="Currency Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGCVTP">
+      <endUserTexts label="TGK Conv. Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGDIM3">
+      <endUserTexts label="TGK YEP Details"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENCS">
+      <endUserTexts label="TGK Entity CTP Segment"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENT">
+      <endUserTexts label="TGK Entity"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENTC">
+      <endUserTexts label="TGK Entity CTP"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGFA">
+      <endUserTexts label="TGK Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGMVT">
+      <endUserTexts label="TGK Movement Type"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGORIG">
+      <endUserTexts label="TGK Origin"/>
+      <inlineType primitiveType="NVARCHAR" length="80" precision="80" scale="0"/>
+    </element>
+    <element name="ZC_TGPER">
+      <endUserTexts label="TGK Period"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGRS">
+      <endUserTexts label="Data Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEN">
+      <endUserTexts label="TGK Scenario"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEO">
+      <endUserTexts label="TGK Scenario (orig.)"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGSCTY">
+      <endUserTexts label="TGK Scenario Type"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSECC">
+      <endUserTexts label="TGK Security Code"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSYR">
+      <endUserTexts label="Submission Year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGTABN">
+      <endUserTexts label="TGK Table Name"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_VISREG">
+      <endUserTexts label="VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTY">
+      <endUserTexts label="ZC_TGAMTY"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY">
+      <endUserTexts label="ZC_RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_REPFL">
+      <endUserTexts label="ZC_REPFL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGVERD">
+      <endUserTexts label="ZC_TGVERD"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVERS">
+      <endUserTexts label="TGK Version"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_RVERS">
+      <endUserTexts label="Version (Ledger)"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="CURRENCY">
+      <endUserTexts label="Currency key"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ZK_TGAMOP">
+      <endUserTexts label="ZK_TGAMOP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAMOY">
+      <endUserTexts label="ZK_TGAMOY"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAPPY">
+      <endUserTexts label="Amount (YTD) PP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZC_MGVOVR">
+      <endUserTexts label="Managerial View Override"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <input>
+      <viewNode xsi:type="View:Projection">#/0/P_TO_ENHANCED</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="CO_AREA" sourceName="CO_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_LEDCO" sourceName="ZC_LEDCO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPLVT" sourceName="ZC_TGPLVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS" sourceName="ZC_ZZCONS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COMP_CODE" sourceName="COMP_CODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BU_CGB_FLAG" sourceName="BU_CGB_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDVC" sourceName="ZC_TGEDVC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDIV" sourceName="ZC_TGEDIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS1" sourceName="ZC_ZZCONS1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS2" sourceName="ZC_ZZCONS2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EDIV_MAP_FL" sourceName="EDIV_MAP_FL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CONS03_FLAG" sourceName="CONS03_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ACCNOD" sourceName="ZC_ACCNOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRAC" sourceName="ZC_TGRAC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLACCT" sourceName="ZC_SLACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACCOUNT" sourceName="ACCOUNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC" sourceName="ZC_TGRCC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENVG" sourceName="ZC_TGENVG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVISR" sourceName="ZC_TGVISR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCCV" sourceName="ZC_TGRCCV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVRR" sourceName="ZC_TGVRR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC2" sourceName="ZC_TGRCC2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC3" sourceName="ZC_TGRCC3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRBU" sourceName="ZC_TGRBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPHPC" sourceName="ZC_REPHPC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRFA" sourceName="ZC_TGRFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY2" sourceName="ZC_RRCTY2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FUNC_AREA" sourceName="FUNC_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH" sourceName="CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH2" sourceName="CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUARTER" sourceName="CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUART1" sourceName="CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALYEAR" sourceName="CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER" sourceName="FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER3" sourceName="FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCYEAR" sourceName="FISCYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HALFYEAR1" sourceName="HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLINFP" sourceName="ZC_SLINFP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACC" sourceName="ZC_TGACC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCN" sourceName="ZC_TGACCN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCT" sourceName="ZC_TGACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACMV" sourceName="ZC_TGACMV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTP" sourceName="ZC_TGAMTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGBU" sourceName="ZC_TGBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCAT" sourceName="ZC_TGCAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCURT" sourceName="ZC_TGCURT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCVTP" sourceName="ZC_TGCVTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGDIM3" sourceName="ZC_TGDIM3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENCS" sourceName="ZC_TGENCS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENT" sourceName="ZC_TGENT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENTC" sourceName="ZC_TGENTC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGFA" sourceName="ZC_TGFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGMVT" sourceName="ZC_TGMVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGORIG" sourceName="ZC_TGORIG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPER" sourceName="ZC_TGPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRS" sourceName="ZC_TGRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEN" sourceName="ZC_TGSCEN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEO" sourceName="ZC_TGSCEO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCTY" sourceName="ZC_TGSCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSECC" sourceName="ZC_TGSECC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSYR" sourceName="ZC_TGSYR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGTABN" sourceName="ZC_TGTABN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_VISREG" sourceName="ZC_VISREG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTY" sourceName="ZC_TGAMTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY" sourceName="ZC_RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPFL" sourceName="ZC_REPFL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERD" sourceName="ZC_TGVERD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERS" sourceName="ZC_TGVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RVERS" sourceName="ZC_RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CURRENCY" sourceName="CURRENCY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOP" sourceName="ZK_TGAMOP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOY" sourceName="ZK_TGAMOY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAPPY" sourceName="ZK_TGAPPY"/>
+    </input>
+    <input>
+      <viewNode xsi:type="View:Projection">#/0/Projection_1</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGVOVR" sourceName="ZC_MGVOVR"/>
+    </input>
+    <layout xCoordinate="180" yCoordinate="357" width="0" height="0" expanded="true"/>
+    <join leftInput="#/0/Join_1/P_TO_ENHANCED" rightInput="#/0/Join_1/Projection_1" joinType="leftOuter">
+      <leftElementName>FUNC_AREA</leftElementName>
+      <rightElementName>0FUNC_AREA</rightElementName>
+    </join>
+  </viewNode>
+  <viewNode xsi:type="View:Projection" name="Projection_2">
+    <endUserTexts label=" "/>
+    <element name="0COMP_CODE">
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_MGV01_O">
+      <endUserTexts label="Managerial View 01"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <input>
+      <entity>#/0/system-local.bw.bw2hana::ZAD_MV03</entity>
+      <mapping xsi:type="Type:ElementMapping" targetName="0COMP_CODE" sourceName="0COMP_CODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV01_O" sourceName="ZC_MGV01"/>
+    </input>
+    <layout xCoordinate="334" yCoordinate="357" width="-1" height="-1" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:JoinNode" name="Join_2" joinOrder="OUTSIDE_IN">
+    <endUserTexts label=" "/>
+    <element name="ZK_TGAPPY">
+      <endUserTexts label="Amount (YTD) PP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAMOY">
+      <endUserTexts label="ZK_TGAMOY"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAMOP">
+      <endUserTexts label="ZK_TGAMOP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="CURRENCY">
+      <endUserTexts label="Currency key"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ZC_RVERS">
+      <endUserTexts label="Version (Ledger)"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZC_TGVERS">
+      <endUserTexts label="TGK Version"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVERD">
+      <endUserTexts label="ZC_TGVERD"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_REPFL">
+      <endUserTexts label="ZC_REPFL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY">
+      <endUserTexts label="ZC_RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTY">
+      <endUserTexts label="ZC_TGAMTY"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_VISREG">
+      <endUserTexts label="VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGTABN">
+      <endUserTexts label="TGK Table Name"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGSYR">
+      <endUserTexts label="Submission Year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGSECC">
+      <endUserTexts label="TGK Security Code"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSCTY">
+      <endUserTexts label="TGK Scenario Type"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEO">
+      <endUserTexts label="TGK Scenario (orig.)"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEN">
+      <endUserTexts label="TGK Scenario"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGRS">
+      <endUserTexts label="Data Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGPER">
+      <endUserTexts label="TGK Period"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGORIG">
+      <endUserTexts label="TGK Origin"/>
+      <inlineType primitiveType="NVARCHAR" length="80" precision="80" scale="0"/>
+    </element>
+    <element name="ZC_TGMVT">
+      <endUserTexts label="TGK Movement Type"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGFA">
+      <endUserTexts label="TGK Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENTC">
+      <endUserTexts label="TGK Entity CTP"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENT">
+      <endUserTexts label="TGK Entity"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENCS">
+      <endUserTexts label="TGK Entity CTP Segment"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGDIM3">
+      <endUserTexts label="TGK YEP Details"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGCVTP">
+      <endUserTexts label="TGK Conv. Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGCURT">
+      <endUserTexts label="Currency Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGCAT">
+      <endUserTexts label="TGK Category"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGBU">
+      <endUserTexts label="TGK Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTP">
+      <endUserTexts label="TGK Amount Type"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGACMV">
+      <endUserTexts label="TGK Account/Movement"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGACCT">
+      <endUserTexts label="TGK Account Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACCN">
+      <endUserTexts label="TGK Account Nature"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACC">
+      <endUserTexts label="TGK Account"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_SLINFP">
+      <endUserTexts label="InfoProvider Property"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="HALFYEAR1">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="FISCYEAR">
+      <endUserTexts label="Fiscal year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="FISCVARNT">
+      <endUserTexts label="Fiscal year variant"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="FISCPER3">
+      <endUserTexts label="Posting period"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="FISCPER">
+      <endUserTexts label="Fiscal year / period"/>
+      <inlineType primitiveType="NVARCHAR" length="7" precision="7" scale="0"/>
+    </element>
+    <element name="CALYEAR">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CALQUART1">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="CALQUARTER">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="CALMONTH2">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CALMONTH">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="FUNC_AREA">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY2">
+      <endUserTexts label="Record Type"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZC_TGRFA">
+      <endUserTexts label="(Rep.Unit) Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_REPHPC">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRBU">
+      <endUserTexts label="(Rep.Unit) Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC3">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC2">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGVRR">
+      <endUserTexts label="TGK DM VIS Region Reversal"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCCV">
+      <endUserTexts label="Company Code/VIS Region"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVISR">
+      <endUserTexts label="TGK VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGENVG">
+      <endUserTexts label="Tagetik Entity VG"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ACCOUNT">
+      <endUserTexts label="ZC_REPHPC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_SLACCT">
+      <endUserTexts label="ZC_SLACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGRAC">
+      <endUserTexts label="ZC_TGRAC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ACCNOD">
+      <endUserTexts label="ZC_ACCNOD"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="CONS03_FLAG">
+      <endUserTexts label="CONS03_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="EDIV_MAP_FL">
+      <endUserTexts label="EDIV_MAP_FL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS2">
+      <endUserTexts label="ZC_ZZCONS2"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS1">
+      <endUserTexts label="ZC_ZZCONS1"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDIV">
+      <endUserTexts label="ZC_TGEDIV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDVC">
+      <endUserTexts label="ZC_TGEDVC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BU_CGB_FLAG">
+      <endUserTexts label="BU_CGB_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="COMP_CODE">
+      <endUserTexts label="COMP_CODE"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS">
+      <endUserTexts label="ZC_ZZCONS"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGPLVT">
+      <endUserTexts label="ZC_TGPLVT"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_LEDCO">
+      <endUserTexts label="ZC_LEDCO"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CO_AREA">
+      <endUserTexts label="CO_AREA"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_MGV01_O">
+      <endUserTexts label="Managerial View 01"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_MGVOVR">
+      <endUserTexts label="Managerial View Override"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_MGV01_FINAL" aggregationBehavior="NONE">
+      <endUserTexts label="ZC_MGV01_FINAL"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="20"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>if((&quot;ZC_MGVOVR&quot;='0')AND(&quot;COMP_CODE&quot;!='1650'),&quot;ZC_MGV01_O&quot;,'')</formula>
+      </calculationDefinition>
+    </element>
+    <element name="ZC_REPHPC_AUX_L" aggregationBehavior="NONE">
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="12"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>if((&quot;ZC_REPHPC&quot;='')or(isNull(&quot;ZC_REPHPC&quot;)),'',&quot;ZC_REPHPC&quot;)</formula>
+      </calculationDefinition>
+    </element>
+    <input>
+      <viewNode xsi:type="View:JoinNode">#/0/Join_1</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAPPY" sourceName="ZK_TGAPPY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOY" sourceName="ZK_TGAMOY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOP" sourceName="ZK_TGAMOP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CURRENCY" sourceName="CURRENCY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RVERS" sourceName="ZC_RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERS" sourceName="ZC_TGVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERD" sourceName="ZC_TGVERD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPFL" sourceName="ZC_REPFL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY" sourceName="ZC_RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTY" sourceName="ZC_TGAMTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_VISREG" sourceName="ZC_VISREG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGTABN" sourceName="ZC_TGTABN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSYR" sourceName="ZC_TGSYR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSECC" sourceName="ZC_TGSECC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCTY" sourceName="ZC_TGSCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEO" sourceName="ZC_TGSCEO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEN" sourceName="ZC_TGSCEN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRS" sourceName="ZC_TGRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPER" sourceName="ZC_TGPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGORIG" sourceName="ZC_TGORIG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGMVT" sourceName="ZC_TGMVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGFA" sourceName="ZC_TGFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENTC" sourceName="ZC_TGENTC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENT" sourceName="ZC_TGENT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENCS" sourceName="ZC_TGENCS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGDIM3" sourceName="ZC_TGDIM3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCVTP" sourceName="ZC_TGCVTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCURT" sourceName="ZC_TGCURT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCAT" sourceName="ZC_TGCAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGBU" sourceName="ZC_TGBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTP" sourceName="ZC_TGAMTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACMV" sourceName="ZC_TGACMV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCT" sourceName="ZC_TGACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCN" sourceName="ZC_TGACCN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACC" sourceName="ZC_TGACC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLINFP" sourceName="ZC_SLINFP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HALFYEAR1" sourceName="HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCYEAR" sourceName="FISCYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER3" sourceName="FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER" sourceName="FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALYEAR" sourceName="CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUART1" sourceName="CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUARTER" sourceName="CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH2" sourceName="CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH" sourceName="CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FUNC_AREA" sourceName="FUNC_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY2" sourceName="ZC_RRCTY2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRFA" sourceName="ZC_TGRFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPHPC" sourceName="ZC_REPHPC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRBU" sourceName="ZC_TGRBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC3" sourceName="ZC_TGRCC3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC2" sourceName="ZC_TGRCC2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVRR" sourceName="ZC_TGVRR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCCV" sourceName="ZC_TGRCCV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVISR" sourceName="ZC_TGVISR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENVG" sourceName="ZC_TGENVG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC" sourceName="ZC_TGRCC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACCOUNT" sourceName="ACCOUNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLACCT" sourceName="ZC_SLACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRAC" sourceName="ZC_TGRAC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ACCNOD" sourceName="ZC_ACCNOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CONS03_FLAG" sourceName="CONS03_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EDIV_MAP_FL" sourceName="EDIV_MAP_FL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS2" sourceName="ZC_ZZCONS2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS1" sourceName="ZC_ZZCONS1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDIV" sourceName="ZC_TGEDIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDVC" sourceName="ZC_TGEDVC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BU_CGB_FLAG" sourceName="BU_CGB_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COMP_CODE" sourceName="COMP_CODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS" sourceName="ZC_ZZCONS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPLVT" sourceName="ZC_TGPLVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_LEDCO" sourceName="ZC_LEDCO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CO_AREA" sourceName="CO_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGVOVR" sourceName="ZC_MGVOVR"/>
+    </input>
+    <input>
+      <viewNode xsi:type="View:Projection">#/0/Projection_2</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV01_O" sourceName="ZC_MGV01_O"/>
+    </input>
+    <layout xCoordinate="334" yCoordinate="261" width="0" height="0" expanded="true"/>
+    <join leftInput="#/0/Join_2/Join_1" rightInput="#/0/Join_2/Projection_2" joinType="leftOuter">
+      <leftElementName>COMP_CODE</leftElementName>
+      <rightElementName>0COMP_CODE</rightElementName>
+    </join>
+  </viewNode>
+  <viewNode xsi:type="View:Projection" name="Projection_3">
+    <endUserTexts label=" "/>
+    <element name="_BIC_ZC_REPHPC">
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="_BIC_ZC_MGV02">
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="_BIC_ZC_GEO">
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="_BIC_ZC_CLN06">
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="_BIC_ZC_MGV00">
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_REPHPC_AUX_R" aggregationBehavior="NONE">
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="12"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>if((&quot;_BIC_ZC_REPHPC&quot;='')or(isNull(&quot;_BIC_ZC_REPHPC&quot;)),'',&quot;_BIC_ZC_REPHPC&quot;)</formula>
+      </calculationDefinition>
+    </element>
+    <filterExpression language="COLUMN_ENGINE">
+      <formula>((isNull(&quot;_BIC_ZC_GEO&quot;)) OR(&quot;_BIC_ZC_GEO&quot;=''))&#xD;
+AND ((isNull(&quot;_BIC_ZC_CLN06&quot;))OR(&quot;_BIC_ZC_CLN06&quot;='')) AND ((&quot;_BIC_ZC_REPHPC&quot;!='')AND(not(isNull(&quot;_BIC_ZC_REPHPC&quot;))))</formula>
+    </filterExpression>
+    <input>
+      <entity>#/0/"ABAP"./BIC/AZAD_MV012</entity>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_REPHPC" sourceName="/BIC/ZC_REPHPC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_MGV02" sourceName="/BIC/ZC_MGV02"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_GEO" sourceName="/BIC/ZC_GEO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_CLN06" sourceName="/BIC/ZC_CLN06"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_MGV00" sourceName="/BIC/ZC_MGV00"/>
+    </input>
+    <layout xCoordinate="488" yCoordinate="357" width="-1" height="-1" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:Aggregation" name="Aggregation_1">
+    <endUserTexts label=" "/>
+    <element name="_BIC_ZC_REPHPC">
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="_BIC_ZC_MGV02">
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_REPHPC_AUX_R">
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="12" precision="0" scale="0"/>
+    </element>
+    <element name="_BIC_ZC_MGV00">
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <input>
+      <viewNode xsi:type="View:Projection">#/0/Projection_3</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_REPHPC" sourceName="_BIC_ZC_REPHPC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_MGV02" sourceName="_BIC_ZC_MGV02"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPHPC_AUX_R" sourceName="ZC_REPHPC_AUX_R"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_MGV00" sourceName="_BIC_ZC_MGV00"/>
+    </input>
+    <layout xCoordinate="488" yCoordinate="261" width="-1" height="-1" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:JoinNode" name="Join_3" joinOrder="OUTSIDE_IN">
+    <endUserTexts label=" "/>
+    <element name="CURRENCY">
+      <endUserTexts label="Currency key"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ZC_RVERS">
+      <endUserTexts label="Version (Ledger)"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZC_TGVERS">
+      <endUserTexts label="TGK Version"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVERD">
+      <endUserTexts label="ZC_TGVERD"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_REPFL">
+      <endUserTexts label="ZC_REPFL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY">
+      <endUserTexts label="ZC_RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTY">
+      <endUserTexts label="ZC_TGAMTY"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_VISREG">
+      <endUserTexts label="VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGTABN">
+      <endUserTexts label="TGK Table Name"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGSYR">
+      <endUserTexts label="Submission Year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGSECC">
+      <endUserTexts label="TGK Security Code"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSCTY">
+      <endUserTexts label="TGK Scenario Type"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEO">
+      <endUserTexts label="TGK Scenario (orig.)"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEN">
+      <endUserTexts label="TGK Scenario"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGRS">
+      <endUserTexts label="Data Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGPER">
+      <endUserTexts label="TGK Period"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGORIG">
+      <endUserTexts label="TGK Origin"/>
+      <inlineType primitiveType="NVARCHAR" length="80" precision="80" scale="0"/>
+    </element>
+    <element name="ZC_TGMVT">
+      <endUserTexts label="TGK Movement Type"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGFA">
+      <endUserTexts label="TGK Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENTC">
+      <endUserTexts label="TGK Entity CTP"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENT">
+      <endUserTexts label="TGK Entity"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENCS">
+      <endUserTexts label="TGK Entity CTP Segment"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGDIM3">
+      <endUserTexts label="TGK YEP Details"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGCVTP">
+      <endUserTexts label="TGK Conv. Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGCURT">
+      <endUserTexts label="Currency Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGCAT">
+      <endUserTexts label="TGK Category"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGBU">
+      <endUserTexts label="TGK Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTP">
+      <endUserTexts label="TGK Amount Type"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGACMV">
+      <endUserTexts label="TGK Account/Movement"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGACCT">
+      <endUserTexts label="TGK Account Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACCN">
+      <endUserTexts label="TGK Account Nature"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACC">
+      <endUserTexts label="TGK Account"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_SLINFP">
+      <endUserTexts label="InfoProvider Property"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="HALFYEAR1">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="FISCYEAR">
+      <endUserTexts label="Fiscal year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="FISCVARNT">
+      <endUserTexts label="Fiscal year variant"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="FISCPER3">
+      <endUserTexts label="Posting period"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="FISCPER">
+      <endUserTexts label="Fiscal year / period"/>
+      <inlineType primitiveType="NVARCHAR" length="7" precision="7" scale="0"/>
+    </element>
+    <element name="CALYEAR">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CALQUART1">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="CALQUARTER">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="CALMONTH2">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CALMONTH">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="FUNC_AREA">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY2">
+      <endUserTexts label="Record Type"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZC_TGRFA">
+      <endUserTexts label="(Rep.Unit) Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_REPHPC">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRBU">
+      <endUserTexts label="(Rep.Unit) Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC3">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC2">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGVRR">
+      <endUserTexts label="TGK DM VIS Region Reversal"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCCV">
+      <endUserTexts label="Company Code/VIS Region"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVISR">
+      <endUserTexts label="TGK VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGENVG">
+      <endUserTexts label="Tagetik Entity VG"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ACCOUNT">
+      <endUserTexts label="ZC_REPHPC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_SLACCT">
+      <endUserTexts label="ZC_SLACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGRAC">
+      <endUserTexts label="ZC_TGRAC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ACCNOD">
+      <endUserTexts label="ZC_ACCNOD"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="CONS03_FLAG">
+      <endUserTexts label="CONS03_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="EDIV_MAP_FL">
+      <endUserTexts label="EDIV_MAP_FL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS2">
+      <endUserTexts label="ZC_ZZCONS2"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS1">
+      <endUserTexts label="ZC_ZZCONS1"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDIV">
+      <endUserTexts label="ZC_TGEDIV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDVC">
+      <endUserTexts label="ZC_TGEDVC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BU_CGB_FLAG">
+      <endUserTexts label="BU_CGB_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="COMP_CODE">
+      <endUserTexts label="COMP_CODE"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS">
+      <endUserTexts label="ZC_ZZCONS"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGPLVT">
+      <endUserTexts label="ZC_TGPLVT"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_LEDCO">
+      <endUserTexts label="ZC_LEDCO"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CO_AREA">
+      <endUserTexts label="CO_AREA"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_MGV01_O">
+      <endUserTexts label="Managerial View 01"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_MGVOVR">
+      <endUserTexts label="Managerial View Override"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_MGV01_FINAL">
+      <endUserTexts label="ZC_MGV01_FINAL"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="20" precision="0" scale="0"/>
+    </element>
+    <element name="ZK_TGAPPY">
+      <endUserTexts label="Amount (YTD) PP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAMOY">
+      <endUserTexts label="ZK_TGAMOY"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZK_TGAMOP">
+      <endUserTexts label="ZK_TGAMOP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="ZC_MGV02">
+      <endUserTexts label="ZC_MGV02"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="_BIC_ZC_MGV00">
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <input>
+      <viewNode xsi:type="View:JoinNode">#/0/Join_2</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="CURRENCY" sourceName="CURRENCY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RVERS" sourceName="ZC_RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERS" sourceName="ZC_TGVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERD" sourceName="ZC_TGVERD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPFL" sourceName="ZC_REPFL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY" sourceName="ZC_RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTY" sourceName="ZC_TGAMTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_VISREG" sourceName="ZC_VISREG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGTABN" sourceName="ZC_TGTABN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSYR" sourceName="ZC_TGSYR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSECC" sourceName="ZC_TGSECC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCTY" sourceName="ZC_TGSCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEO" sourceName="ZC_TGSCEO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEN" sourceName="ZC_TGSCEN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRS" sourceName="ZC_TGRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPER" sourceName="ZC_TGPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGORIG" sourceName="ZC_TGORIG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGMVT" sourceName="ZC_TGMVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGFA" sourceName="ZC_TGFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENTC" sourceName="ZC_TGENTC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENT" sourceName="ZC_TGENT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENCS" sourceName="ZC_TGENCS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGDIM3" sourceName="ZC_TGDIM3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCVTP" sourceName="ZC_TGCVTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCURT" sourceName="ZC_TGCURT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCAT" sourceName="ZC_TGCAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGBU" sourceName="ZC_TGBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTP" sourceName="ZC_TGAMTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACMV" sourceName="ZC_TGACMV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCT" sourceName="ZC_TGACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCN" sourceName="ZC_TGACCN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACC" sourceName="ZC_TGACC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLINFP" sourceName="ZC_SLINFP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HALFYEAR1" sourceName="HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCYEAR" sourceName="FISCYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER3" sourceName="FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER" sourceName="FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALYEAR" sourceName="CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUART1" sourceName="CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUARTER" sourceName="CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH2" sourceName="CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH" sourceName="CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FUNC_AREA" sourceName="FUNC_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY2" sourceName="ZC_RRCTY2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRFA" sourceName="ZC_TGRFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPHPC" sourceName="ZC_REPHPC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRBU" sourceName="ZC_TGRBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC3" sourceName="ZC_TGRCC3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC2" sourceName="ZC_TGRCC2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVRR" sourceName="ZC_TGVRR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCCV" sourceName="ZC_TGRCCV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVISR" sourceName="ZC_TGVISR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENVG" sourceName="ZC_TGENVG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC" sourceName="ZC_TGRCC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACCOUNT" sourceName="ACCOUNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLACCT" sourceName="ZC_SLACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRAC" sourceName="ZC_TGRAC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ACCNOD" sourceName="ZC_ACCNOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CONS03_FLAG" sourceName="CONS03_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EDIV_MAP_FL" sourceName="EDIV_MAP_FL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS2" sourceName="ZC_ZZCONS2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS1" sourceName="ZC_ZZCONS1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDIV" sourceName="ZC_TGEDIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDVC" sourceName="ZC_TGEDVC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BU_CGB_FLAG" sourceName="BU_CGB_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COMP_CODE" sourceName="COMP_CODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS" sourceName="ZC_ZZCONS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPLVT" sourceName="ZC_TGPLVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_LEDCO" sourceName="ZC_LEDCO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CO_AREA" sourceName="CO_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV01_O" sourceName="ZC_MGV01_O"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGVOVR" sourceName="ZC_MGVOVR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV01_FINAL" sourceName="ZC_MGV01_FINAL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAPPY" sourceName="ZK_TGAPPY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOY" sourceName="ZK_TGAMOY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOP" sourceName="ZK_TGAMOP"/>
+    </input>
+    <input>
+      <viewNode xsi:type="View:Aggregation">#/0/Aggregation_1</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV02" sourceName="_BIC_ZC_MGV02"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="_BIC_ZC_MGV00" sourceName="_BIC_ZC_MGV00"/>
+    </input>
+    <layout xCoordinate="411" yCoordinate="165" width="0" height="0" expanded="true"/>
+    <join leftInput="#/0/Join_3/Join_2" rightInput="#/0/Join_3/Aggregation_1" joinType="leftOuter">
+      <leftElementName>ZC_REPHPC_AUX_L</leftElementName>
+      <rightElementName>ZC_REPHPC_AUX_R</rightElementName>
+    </join>
+  </viewNode>
+  <viewNode xsi:type="View:Aggregation" name="Aggregation">
+    <element name="ZC_FRCTP" hidden="false" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_FRCTP"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4" semanticType="empty"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>&quot;ZC_TGRCC2&quot;</formula>
+      </calculationDefinition>
+    </element>
+    <element name="ZC_FRCTPS" hidden="false" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_FRCTPS"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4" semanticType="empty"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>&quot;ZC_TGRCC3&quot;</formula>
+      </calculationDefinition>
+    </element>
+    <element name="CURRENCY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Currency key"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0" semanticType="currencyCode"/>
+    </element>
+    <element name="ZC_RVERS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Version (Ledger)"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0" semanticType="empty"/>
+    </element>
+    <element name="ZC_TGVERS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Version"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVERD" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_TGVERD"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_REPFL" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_REPFL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_TGAMTY"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_VISREG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGTABN" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Table Name"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGSYR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Submission Year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGSECC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Security Code"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSCTY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Scenario Type"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEO" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Scenario (orig.)"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGSCEN" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Scenario"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGRS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Data Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGPER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Period"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGORIG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Origin"/>
+      <inlineType primitiveType="NVARCHAR" length="80" precision="80" scale="0"/>
+    </element>
+    <element name="ZC_TGMVT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Movement Type"/>
+      <inlineType primitiveType="NVARCHAR" length="15" precision="15" scale="0"/>
+    </element>
+    <element name="ZC_TGFA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENTC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Entity CTP"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Entity"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGENCS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Entity CTP Segment"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGDIM3" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK YEP Details"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGCVTP" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Conv. Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGCURT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Currency Type"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGCAT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Category"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGBU" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGAMTP" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Amount Type"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGACMV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Account/Movement"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGACCT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Account Type"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACCN" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Account Nature"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_TGACC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK Account"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_SLINFP" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="InfoProvider Property"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="HALFYEAR1" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="FISCYEAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Fiscal year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="FISCVARNT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Fiscal year variant"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="FISCPER3" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Posting period"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="FISCPER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Fiscal year / period"/>
+      <inlineType primitiveType="NVARCHAR" length="7" precision="7" scale="0"/>
+    </element>
+    <element name="CALYEAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CALQUART1" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="CALQUARTER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="CALMONTH2" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CALMONTH" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="FUNC_AREA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_RRCTY2" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Record Type"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZC_TGRFA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="(Rep.Unit) Functional Area"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="ZC_REPHPC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRBU" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="(Rep.Unit) Business Unit"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC3" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC2" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGVRR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK DM VIS Region Reversal"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGRCCV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Company Code/VIS Region"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_TGVISR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="TGK VIS Region/Market"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_TGENVG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Tagetik Entity VG"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_TGRCC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="(Rep.Unit) Company Code"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ACCOUNT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_REPHPC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_SLACCT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_SLACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGRAC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_TGRAC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ACCNOD" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_ACCNOD"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="CONS03_FLAG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="CONS03_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="EDIV_MAP_FL" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="EDIV_MAP_FL"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS2" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_ZZCONS2"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS1" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_ZZCONS1"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDIV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_TGEDIV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ZC_TGEDVC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_TGEDVC"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BU_CGB_FLAG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BU_CGB_FLAG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="COMP_CODE" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="COMP_CODE"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_ZZCONS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_ZZCONS"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ZC_TGPLVT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_TGPLVT"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_LEDCO" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_LEDCO"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CO_AREA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="CO_AREA"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZC_MGV00" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_MGV00"/>
+      <inlineType primitiveType="NVARCHAR" length="30" precision="30" scale="0"/>
+    </element>
+    <element name="ZC_MGV01_O" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Managerial View 01"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZC_MGVOVR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Managerial View Override"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="ZC_MGV01_FINAL" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_MGV01_FINAL"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="20" precision="0" scale="0"/>
+    </element>
+    <element name="ZC_MGV02" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZC_MGV02"/>
+      <inlineType primitiveType="NVARCHAR" length="20" precision="20" scale="0"/>
+    </element>
+    <element name="ZK_TGAPPY" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label="Amount (YTD) PP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2" semanticType="amount"/>
+      <unitCurrencyElement>#/0/Aggregation/CURRENCY</unitCurrencyElement>
+    </element>
+    <element name="ZK_TGAMOY" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label="ZK_TGAMOY"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2" semanticType="amount"/>
+      <unitCurrencyElement>#/0/Aggregation/CURRENCY</unitCurrencyElement>
+    </element>
+    <element name="ZK_TGAMOP" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label="ZK_TGAMOP"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2" semanticType="amount"/>
+      <unitCurrencyElement>#/0/Aggregation/CURRENCY</unitCurrencyElement>
+    </element>
+    <input>
+      <viewNode xsi:type="View:JoinNode">#/0/Join_3</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="CURRENCY" sourceName="CURRENCY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RVERS" sourceName="ZC_RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERS" sourceName="ZC_TGVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVERD" sourceName="ZC_TGVERD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPFL" sourceName="ZC_REPFL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY" sourceName="ZC_RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTY" sourceName="ZC_TGAMTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_VISREG" sourceName="ZC_VISREG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGTABN" sourceName="ZC_TGTABN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSYR" sourceName="ZC_TGSYR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSECC" sourceName="ZC_TGSECC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCTY" sourceName="ZC_TGSCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEO" sourceName="ZC_TGSCEO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGSCEN" sourceName="ZC_TGSCEN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRS" sourceName="ZC_TGRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPER" sourceName="ZC_TGPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGORIG" sourceName="ZC_TGORIG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGMVT" sourceName="ZC_TGMVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGFA" sourceName="ZC_TGFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENTC" sourceName="ZC_TGENTC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENT" sourceName="ZC_TGENT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENCS" sourceName="ZC_TGENCS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGDIM3" sourceName="ZC_TGDIM3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCVTP" sourceName="ZC_TGCVTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCURT" sourceName="ZC_TGCURT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGCAT" sourceName="ZC_TGCAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGBU" sourceName="ZC_TGBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGAMTP" sourceName="ZC_TGAMTP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACMV" sourceName="ZC_TGACMV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCT" sourceName="ZC_TGACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACCN" sourceName="ZC_TGACCN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGACC" sourceName="ZC_TGACC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLINFP" sourceName="ZC_SLINFP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HALFYEAR1" sourceName="HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCYEAR" sourceName="FISCYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER3" sourceName="FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER" sourceName="FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALYEAR" sourceName="CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUART1" sourceName="CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALQUARTER" sourceName="CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH2" sourceName="CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALMONTH" sourceName="CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FUNC_AREA" sourceName="FUNC_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_RRCTY2" sourceName="ZC_RRCTY2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRFA" sourceName="ZC_TGRFA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_REPHPC" sourceName="ZC_REPHPC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRBU" sourceName="ZC_TGRBU"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC3" sourceName="ZC_TGRCC3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC2" sourceName="ZC_TGRCC2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVRR" sourceName="ZC_TGVRR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCCV" sourceName="ZC_TGRCCV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGVISR" sourceName="ZC_TGVISR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGENVG" sourceName="ZC_TGENVG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRCC" sourceName="ZC_TGRCC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACCOUNT" sourceName="ACCOUNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_SLACCT" sourceName="ZC_SLACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGRAC" sourceName="ZC_TGRAC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ACCNOD" sourceName="ZC_ACCNOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CONS03_FLAG" sourceName="CONS03_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EDIV_MAP_FL" sourceName="EDIV_MAP_FL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS2" sourceName="ZC_ZZCONS2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS1" sourceName="ZC_ZZCONS1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDIV" sourceName="ZC_TGEDIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGEDVC" sourceName="ZC_TGEDVC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BU_CGB_FLAG" sourceName="BU_CGB_FLAG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COMP_CODE" sourceName="COMP_CODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_ZZCONS" sourceName="ZC_ZZCONS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_TGPLVT" sourceName="ZC_TGPLVT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_LEDCO" sourceName="ZC_LEDCO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CO_AREA" sourceName="CO_AREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV00" sourceName="_BIC_ZC_MGV00"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV01_O" sourceName="ZC_MGV01_O"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGVOVR" sourceName="ZC_MGVOVR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV01_FINAL" sourceName="ZC_MGV01_FINAL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_MGV02" sourceName="ZC_MGV02"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAPPY" sourceName="ZK_TGAPPY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOY" sourceName="ZK_TGAMOY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZK_TGAMOP" sourceName="ZK_TGAMOP"/>
+    </input>
+    <layout xCoordinate="411" yCoordinate="87" width="0" height="0" expanded="true"/>
+  </viewNode>
+  <viewLayout relativeWidthScenario="41"/>
+</View:ColumnView>

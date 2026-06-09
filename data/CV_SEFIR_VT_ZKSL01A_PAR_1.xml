@@ -1,0 +1,2562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<View:ColumnView xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Type="http://www.sap.com/ndb/DataModelType.ecore" xmlns:View="http://www.sap.com/ndb/ViewModelView.ecore" schemaVersion="2.3" name="CV_SEFIR_VT_ZKSL01A_PAR_1" dataCategory="CUBE" hierarchiesSQLEnabled="false" defaultNode="#//Aggregation" clientDependent="true" applyPrivilegeType="NONE" translationRelevant="true">
+  <endUserTexts label="SEFIR Virtual Table ZKSL01A&#xD;&#xA;CV_SEFIR_VT_ZKSL01A_PAR_1"/>
+  <origin/>
+  <defaultSchema schemaName="ABAP"/>
+  <parameter name="I_FISCYEAR" mandatory="true" multipleSelections="true">
+    <endUserTexts label="I_FISCYEAR"/>
+    <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4"/>
+    <defaultValue>2018</defaultValue>
+    <defaultRange lowValue="2018"/>
+  </parameter>
+  <parameter name="I_CO_AREA" mandatory="true" multipleSelections="true">
+    <endUserTexts label="I_CO_AREA"/>
+    <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4"/>
+    <defaultValue>1640</defaultValue>
+    <defaultRange lowValue="1640"/>
+  </parameter>
+  <executionHints preferredEngine="SQL" propagateInstantiation="true"/>
+  <viewNode xsi:type="View:Projection" name="P_VT_x10_Line_Items_Table">
+    <endUserTexts label=" "/>
+    <element name="RCLNT">
+      <endUserTexts label="RCLNT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="GL_SIRID">
+      <endUserTexts label="GL_SIRID"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="RLDNR">
+      <endUserTexts label="RLDNR"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RRCTY">
+      <endUserTexts label="RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="RVERS">
+      <endUserTexts label="RVERS"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="RYEAR">
+      <endUserTexts label="RYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RTCUR">
+      <endUserTexts label="RTCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="RUNIT">
+      <endUserTexts label="RUNIT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="DRCRK">
+      <endUserTexts label="DRCRK"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="POPER">
+      <endUserTexts label="POPER"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="DOCCT">
+      <endUserTexts label="DOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="DOCNR">
+      <endUserTexts label="DOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="DOCLN">
+      <endUserTexts label="DOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RBUKRS">
+      <endUserTexts label="RBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RACCT">
+      <endUserTexts label="RACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RFAREA">
+      <endUserTexts label="RFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="RPRCTR">
+      <endUserTexts label="RPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RZZREGION">
+      <endUserTexts label="RZZREGION"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RZZREPHIER">
+      <endUserTexts label="RZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="RHOART">
+      <endUserTexts label="RHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RZZKUKLA">
+      <endUserTexts label="RZZKUKLA"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="LOGSYS">
+      <endUserTexts label="LOGSYS"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RASSC">
+      <endUserTexts label="RASSC"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RMVCT">
+      <endUserTexts label="RMVCT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZZCUST">
+      <endUserTexts label="ZZCUST"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EPRCTR">
+      <endUserTexts label="EPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KOKRS">
+      <endUserTexts label="KOKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZCONSCODE">
+      <endUserTexts label="ZZCONSCODE"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="WERKS">
+      <endUserTexts label="WERKS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STAGR">
+      <endUserTexts label="STAGR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="ZZACTIV">
+      <endUserTexts label="ZZACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZALLOC">
+      <endUserTexts label="ZZALLOC"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZONLINE">
+      <endUserTexts label="ZZONLINE"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="SBUKRS">
+      <endUserTexts label="SBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="SFAREA">
+      <endUserTexts label="SFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="SPRCTR">
+      <endUserTexts label="SPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="SZZREPHIER">
+      <endUserTexts label="SZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="SHOART">
+      <endUserTexts label="SHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="TSL">
+      <endUserTexts label="TSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="HSL">
+      <endUserTexts label="HSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="KSL">
+      <endUserTexts label="KSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="MSL">
+      <endUserTexts label="MSL"/>
+      <inlineType primitiveType="DECIMAL" length="15" precision="15" scale="3"/>
+    </element>
+    <element name="SGTXT">
+      <endUserTexts label="SGTXT"/>
+      <inlineType primitiveType="NVARCHAR" length="50" precision="50" scale="0"/>
+    </element>
+    <element name="DOCTY">
+      <endUserTexts label="DOCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ACTIV">
+      <endUserTexts label="ACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BUDAT">
+      <endUserTexts label="BUDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="WSDAT">
+      <endUserTexts label="WSDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="REFRYEAR">
+      <endUserTexts label="REFRYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="REFDOCNR">
+      <endUserTexts label="REFDOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="REFDOCLN">
+      <endUserTexts label="REFDOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="REFDOCCT">
+      <endUserTexts label="REFDOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="REFACTIV">
+      <endUserTexts label="REFACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CPUDT">
+      <endUserTexts label="CPUDT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="CPUTM">
+      <endUserTexts label="CPUTM"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="USNAM">
+      <endUserTexts label="USNAM"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AWTYP">
+      <endUserTexts label="AWTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="AWORG">
+      <endUserTexts label="AWORG"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RWCUR">
+      <endUserTexts label="RWCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="BELNR">
+      <endUserTexts label="BELNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BUZEI">
+      <endUserTexts label="BUZEI"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="LINETYPE">
+      <endUserTexts label="LINETYPE"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="XSPLITMOD">
+      <endUserTexts label="XSPLITMOD"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GSBER">
+      <endUserTexts label="GSBER"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="KOSTL">
+      <endUserTexts label="KOSTL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BLDAT">
+      <endUserTexts label="BLDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="LSTAR">
+      <endUserTexts label="LSTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="AUFNR">
+      <endUserTexts label="AUFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AUFPL">
+      <endUserTexts label="AUFPL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANLN1">
+      <endUserTexts label="ANLN1"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ANLN2">
+      <endUserTexts label="ANLN2"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWKEY">
+      <endUserTexts label="BWKEY"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWTAR">
+      <endUserTexts label="BWTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANBWA">
+      <endUserTexts label="ANBWA"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="KUNNR">
+      <endUserTexts label="KUNNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="LIFNR">
+      <endUserTexts label="LIFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELN">
+      <endUserTexts label="EBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELP">
+      <endUserTexts label="EBELP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ERKRS">
+      <endUserTexts label="ERKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PAOBJNR">
+      <endUserTexts label="PAOBJNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="PASUBNR">
+      <endUserTexts label="PASUBNR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PS_PSP_PNR">
+      <endUserTexts label="PS_PSP_PNR"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="KDAUF">
+      <endUserTexts label="KDAUF"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KDPOS">
+      <endUserTexts label="KDPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="FKART">
+      <endUserTexts label="FKART"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VKORG">
+      <endUserTexts label="VKORG"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VTWEG">
+      <endUserTexts label="VTWEG"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="AUBEL">
+      <endUserTexts label="AUBEL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AUPOS">
+      <endUserTexts label="AUPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="SPART">
+      <endUserTexts label="SPART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="VBELN">
+      <endUserTexts label="VBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="POSNR">
+      <endUserTexts label="POSNR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="VKGRP">
+      <endUserTexts label="VKGRP"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="VKBUR">
+      <endUserTexts label="VKBUR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STFLG">
+      <endUserTexts label="STFLG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GRTYP">
+      <endUserTexts label="GRTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="VALUT">
+      <endUserTexts label="VALUT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="AWREF_REV">
+      <endUserTexts label="AWREF_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AWORG_REV">
+      <endUserTexts label="AWORG_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BWART">
+      <endUserTexts label="BWART"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="BLART">
+      <endUserTexts label="BLART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="MATNR">
+      <endUserTexts label="MATNR"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="ZZBOI">
+      <endUserTexts label="ZZBOI"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="WSL">
+      <inlineType primitiveType="DECIMAL" length="23" precision="23" scale="2"/>
+    </element>
+    <element name="ZZMHIER">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="COUNTER" aggregationBehavior="NONE">
+      <endUserTexts label=" "/>
+      <inlineType name="DECIMAL" primitiveType="DECIMAL" length="17"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>'1'</formula>
+      </calculationDefinition>
+    </element>
+    <element name="ZWSL17" aggregationBehavior="NONE">
+      <endUserTexts label=" "/>
+      <inlineType name="DECIMAL" primitiveType="DECIMAL" length="17" scale="2"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>&quot;WSL&quot;</formula>
+      </calculationDefinition>
+    </element>
+    <filterExpression language="COLUMN_ENGINE">
+      <formula>(&quot;RLDNR&quot; ='ZA') and (&quot;RVERS&quot; ='001') and (in (&quot;RRCTY&quot;,'0','2')) and (in(&quot;KOKRS&quot;,$$I_CO_AREA$$)) and (in(&quot;RYEAR&quot;,$$I_FISCYEAR$$))</formula>
+    </filterExpression>
+    <input>
+      <entity>#//"ABAP".ZVT_ZKSL01A</entity>
+      <mapping xsi:type="Type:ElementMapping" targetName="RCLNT" sourceName="RCLNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GL_SIRID" sourceName="GL_SIRID"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RLDNR" sourceName="RLDNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RRCTY" sourceName="RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RVERS" sourceName="RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RYEAR" sourceName="RYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RTCUR" sourceName="RTCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RUNIT" sourceName="RUNIT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DRCRK" sourceName="DRCRK"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POPER" sourceName="POPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCCT" sourceName="DOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCNR" sourceName="DOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCLN" sourceName="DOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RBUKRS" sourceName="RBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RACCT" sourceName="RACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RFAREA" sourceName="RFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RPRCTR" sourceName="RPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREGION" sourceName="RZZREGION"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREPHIER" sourceName="RZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RHOART" sourceName="RHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZKUKLA" sourceName="RZZKUKLA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LOGSYS" sourceName="LOGSYS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RASSC" sourceName="RASSC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RMVCT" sourceName="RMVCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCUST" sourceName="ZZCUST"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EPRCTR" sourceName="EPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOKRS" sourceName="KOKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCONSCODE" sourceName="ZZCONSCODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WERKS" sourceName="WERKS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STAGR" sourceName="STAGR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZACTIV" sourceName="ZZACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZALLOC" sourceName="ZZALLOC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZONLINE" sourceName="ZZONLINE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SBUKRS" sourceName="SBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SFAREA" sourceName="SFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPRCTR" sourceName="SPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SZZREPHIER" sourceName="SZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SHOART" sourceName="SHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="TSL" sourceName="TSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HSL" sourceName="HSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KSL" sourceName="KSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MSL" sourceName="MSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SGTXT" sourceName="SGTXT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCTY" sourceName="DOCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACTIV" sourceName="ACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUDAT" sourceName="BUDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WSDAT" sourceName="WSDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFRYEAR" sourceName="REFRYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCNR" sourceName="REFDOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCLN" sourceName="REFDOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCCT" sourceName="REFDOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFACTIV" sourceName="REFACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUDT" sourceName="CPUDT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUTM" sourceName="CPUTM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="USNAM" sourceName="USNAM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWTYP" sourceName="AWTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG" sourceName="AWORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RWCUR" sourceName="RWCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BELNR" sourceName="BELNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUZEI" sourceName="BUZEI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LINETYPE" sourceName="LINETYPE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="XSPLITMOD" sourceName="XSPLITMOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GSBER" sourceName="GSBER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOSTL" sourceName="KOSTL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLDAT" sourceName="BLDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LSTAR" sourceName="LSTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFNR" sourceName="AUFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFPL" sourceName="AUFPL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN1" sourceName="ANLN1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN2" sourceName="ANLN2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWKEY" sourceName="BWKEY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWTAR" sourceName="BWTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANBWA" sourceName="ANBWA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KUNNR" sourceName="KUNNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LIFNR" sourceName="LIFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELN" sourceName="EBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELP" sourceName="EBELP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ERKRS" sourceName="ERKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PAOBJNR" sourceName="PAOBJNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PASUBNR" sourceName="PASUBNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PS_PSP_PNR" sourceName="PS_PSP_PNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDAUF" sourceName="KDAUF"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDPOS" sourceName="KDPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FKART" sourceName="FKART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKORG" sourceName="VKORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VTWEG" sourceName="VTWEG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUBEL" sourceName="AUBEL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUPOS" sourceName="AUPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPART" sourceName="SPART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VBELN" sourceName="VBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POSNR" sourceName="POSNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKGRP" sourceName="VKGRP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKBUR" sourceName="VKBUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STFLG" sourceName="STFLG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GRTYP" sourceName="GRTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VALUT" sourceName="VALUT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWREF_REV" sourceName="AWREF_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG_REV" sourceName="AWORG_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWART" sourceName="BWART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLART" sourceName="BLART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MATNR" sourceName="MATNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZBOI" sourceName="ZZBOI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WSL" sourceName="WSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZMHIER" sourceName="ZZMHIER"/>
+      <layout xCoordinate="70" yCoordinate="30"/>
+    </input>
+    <layout xCoordinate="22" yCoordinate="357" width="-1" height="-1" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:Projection" name="P_COMPCODE_Attrs">
+    <endUserTexts label=" "/>
+    <element name="ZC_LEDCO">
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="COMP_CODE">
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="FISCVARNT">
+      <endUserTexts label="FISCVARNT"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="0CURKEY_LC">
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="0CURKEY_GC">
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <input alias="_BIC_AZAD_SEF162">
+      <entity>#//"ABAP"./BIC/AZAD_SEF162</entity>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZC_LEDCO" sourceName="/BIC/ZC_LEDCO"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COMP_CODE" sourceName="COMP_CODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CURKEY_LC" sourceName="CURKEY_LC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CURKEY_GC" sourceName="CURKEY_GC"/>
+    </input>
+    <layout xCoordinate="176" yCoordinate="357" width="-1" height="-1" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:JoinNode" name="J_x10_LItems_CompCode" joinOrder="OUTSIDE_IN">
+    <endUserTexts label=" "/>
+    <element name="FISCVARNT">
+      <endUserTexts label="FISCVARNT"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RCLNT">
+      <endUserTexts label="RCLNT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="GL_SIRID">
+      <endUserTexts label="GL_SIRID"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="RLDNR">
+      <endUserTexts label="RLDNR"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RRCTY">
+      <endUserTexts label="RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="RVERS">
+      <endUserTexts label="RVERS"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="RYEAR">
+      <endUserTexts label="RYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RTCUR">
+      <endUserTexts label="RTCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="RUNIT">
+      <endUserTexts label="RUNIT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="DRCRK">
+      <endUserTexts label="DRCRK"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="POPER">
+      <endUserTexts label="POPER"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="DOCCT">
+      <endUserTexts label="DOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="DOCNR">
+      <endUserTexts label="DOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="DOCLN">
+      <endUserTexts label="DOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RBUKRS">
+      <endUserTexts label="RBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RACCT">
+      <endUserTexts label="RACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RFAREA">
+      <endUserTexts label="RFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="RPRCTR">
+      <endUserTexts label="RPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RZZREGION">
+      <endUserTexts label="RZZREGION"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RZZREPHIER">
+      <endUserTexts label="RZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="RHOART">
+      <endUserTexts label="RHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RZZKUKLA">
+      <endUserTexts label="RZZKUKLA"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="LOGSYS">
+      <endUserTexts label="LOGSYS"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RASSC">
+      <endUserTexts label="RASSC"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RMVCT">
+      <endUserTexts label="RMVCT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZZCUST">
+      <endUserTexts label="ZZCUST"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EPRCTR">
+      <endUserTexts label="EPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KOKRS">
+      <endUserTexts label="KOKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZCONSCODE">
+      <endUserTexts label="ZZCONSCODE"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="WERKS">
+      <endUserTexts label="WERKS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STAGR">
+      <endUserTexts label="STAGR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="ZZACTIV">
+      <endUserTexts label="ZZACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZALLOC">
+      <endUserTexts label="ZZALLOC"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZONLINE">
+      <endUserTexts label="ZZONLINE"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="SBUKRS">
+      <endUserTexts label="SBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="SFAREA">
+      <endUserTexts label="SFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="SPRCTR">
+      <endUserTexts label="SPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="SZZREPHIER">
+      <endUserTexts label="SZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="SHOART">
+      <endUserTexts label="SHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="TSL">
+      <endUserTexts label="TSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="HSL">
+      <endUserTexts label="HSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="KSL">
+      <endUserTexts label="KSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="MSL">
+      <endUserTexts label="MSL"/>
+      <inlineType primitiveType="DECIMAL" length="15" precision="15" scale="3"/>
+    </element>
+    <element name="SGTXT">
+      <endUserTexts label="SGTXT"/>
+      <inlineType primitiveType="NVARCHAR" length="50" precision="50" scale="0"/>
+    </element>
+    <element name="DOCTY">
+      <endUserTexts label="DOCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ACTIV">
+      <endUserTexts label="ACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BUDAT">
+      <endUserTexts label="BUDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="WSDAT">
+      <endUserTexts label="WSDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="REFRYEAR">
+      <endUserTexts label="REFRYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="REFDOCNR">
+      <endUserTexts label="REFDOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="REFDOCLN">
+      <endUserTexts label="REFDOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="REFDOCCT">
+      <endUserTexts label="REFDOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="REFACTIV">
+      <endUserTexts label="REFACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CPUDT">
+      <endUserTexts label="CPUDT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="CPUTM">
+      <endUserTexts label="CPUTM"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="USNAM">
+      <endUserTexts label="USNAM"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AWTYP">
+      <endUserTexts label="AWTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="AWORG">
+      <endUserTexts label="AWORG"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RWCUR">
+      <endUserTexts label="RWCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="BELNR">
+      <endUserTexts label="BELNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BUZEI">
+      <endUserTexts label="BUZEI"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="LINETYPE">
+      <endUserTexts label="LINETYPE"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="XSPLITMOD">
+      <endUserTexts label="XSPLITMOD"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GSBER">
+      <endUserTexts label="GSBER"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="KOSTL">
+      <endUserTexts label="KOSTL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BLDAT">
+      <endUserTexts label="BLDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="LSTAR">
+      <endUserTexts label="LSTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="AUFNR">
+      <endUserTexts label="AUFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AUFPL">
+      <endUserTexts label="AUFPL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANLN1">
+      <endUserTexts label="ANLN1"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ANLN2">
+      <endUserTexts label="ANLN2"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWKEY">
+      <endUserTexts label="BWKEY"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWTAR">
+      <endUserTexts label="BWTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANBWA">
+      <endUserTexts label="ANBWA"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="KUNNR">
+      <endUserTexts label="KUNNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="LIFNR">
+      <endUserTexts label="LIFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELN">
+      <endUserTexts label="EBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELP">
+      <endUserTexts label="EBELP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ERKRS">
+      <endUserTexts label="ERKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PAOBJNR">
+      <endUserTexts label="PAOBJNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="PASUBNR">
+      <endUserTexts label="PASUBNR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PS_PSP_PNR">
+      <endUserTexts label="PS_PSP_PNR"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="KDAUF">
+      <endUserTexts label="KDAUF"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KDPOS">
+      <endUserTexts label="KDPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="FKART">
+      <endUserTexts label="FKART"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VKORG">
+      <endUserTexts label="VKORG"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VTWEG">
+      <endUserTexts label="VTWEG"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="AUBEL">
+      <endUserTexts label="AUBEL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AUPOS">
+      <endUserTexts label="AUPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="SPART">
+      <endUserTexts label="SPART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="VBELN">
+      <endUserTexts label="VBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="POSNR">
+      <endUserTexts label="POSNR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="VKGRP">
+      <endUserTexts label="VKGRP"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="VKBUR">
+      <endUserTexts label="VKBUR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STFLG">
+      <endUserTexts label="STFLG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GRTYP">
+      <endUserTexts label="GRTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="VALUT">
+      <endUserTexts label="VALUT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="AWREF_REV">
+      <endUserTexts label="AWREF_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AWORG_REV">
+      <endUserTexts label="AWORG_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BWART">
+      <endUserTexts label="BWART"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="BLART">
+      <endUserTexts label="BLART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="MATNR">
+      <endUserTexts label="MATNR"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="ZZBOI">
+      <endUserTexts label="ZZBOI"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="COUNTER">
+      <endUserTexts label=" "/>
+      <inlineType name="DECIMAL" primitiveType="DECIMAL" length="17" precision="0" scale="0"/>
+    </element>
+    <element name="0CURKEY_LC">
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ZWSL17">
+      <endUserTexts label=" "/>
+      <inlineType name="DECIMAL" primitiveType="DECIMAL" length="17" precision="0" scale="2"/>
+    </element>
+    <element name="ZZMHIER">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="FISCPER" aggregationBehavior="NONE">
+      <endUserTexts label="FISCPER"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="7"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>&quot;RYEAR&quot;+&quot;POPER&quot;</formula>
+      </calculationDefinition>
+    </element>
+    <element name="FISCPER3" aggregationBehavior="NONE">
+      <endUserTexts label="FISCPER3"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="3"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>&quot;POPER&quot;</formula>
+      </calculationDefinition>
+    </element>
+    <element name="FISCYEAR" aggregationBehavior="NONE">
+      <endUserTexts label="FISCYEAR"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>&quot;RYEAR&quot;</formula>
+      </calculationDefinition>
+    </element>
+    <element name="SOURSYSTEM" aggregationBehavior="NONE">
+      <endUserTexts label="SOURSYSTEM"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="2"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>'P1'</formula>
+      </calculationDefinition>
+    </element>
+    <element name="CALDAY" aggregationBehavior="NONE">
+      <endUserTexts label="CALDAY"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="8"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>&quot;BUDAT&quot;</formula>
+      </calculationDefinition>
+    </element>
+    <element name="CURKEY_GC" aggregationBehavior="NONE">
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="5"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>'EUR'</formula>
+      </calculationDefinition>
+    </element>
+    <input>
+      <viewNode xsi:type="View:Projection">#//P_VT_x10_Line_Items_Table</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="RCLNT" sourceName="RCLNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GL_SIRID" sourceName="GL_SIRID"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RLDNR" sourceName="RLDNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RRCTY" sourceName="RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RVERS" sourceName="RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RYEAR" sourceName="RYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RTCUR" sourceName="RTCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RUNIT" sourceName="RUNIT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DRCRK" sourceName="DRCRK"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POPER" sourceName="POPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCCT" sourceName="DOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCNR" sourceName="DOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCLN" sourceName="DOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RBUKRS" sourceName="RBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RACCT" sourceName="RACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RFAREA" sourceName="RFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RPRCTR" sourceName="RPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREGION" sourceName="RZZREGION"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREPHIER" sourceName="RZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RHOART" sourceName="RHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZKUKLA" sourceName="RZZKUKLA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LOGSYS" sourceName="LOGSYS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RASSC" sourceName="RASSC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RMVCT" sourceName="RMVCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCUST" sourceName="ZZCUST"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EPRCTR" sourceName="EPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOKRS" sourceName="KOKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCONSCODE" sourceName="ZZCONSCODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WERKS" sourceName="WERKS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STAGR" sourceName="STAGR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZACTIV" sourceName="ZZACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZALLOC" sourceName="ZZALLOC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZONLINE" sourceName="ZZONLINE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SBUKRS" sourceName="SBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SFAREA" sourceName="SFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPRCTR" sourceName="SPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SZZREPHIER" sourceName="SZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SHOART" sourceName="SHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="TSL" sourceName="TSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HSL" sourceName="HSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KSL" sourceName="KSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MSL" sourceName="MSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SGTXT" sourceName="SGTXT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCTY" sourceName="DOCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACTIV" sourceName="ACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUDAT" sourceName="BUDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WSDAT" sourceName="WSDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFRYEAR" sourceName="REFRYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCNR" sourceName="REFDOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCLN" sourceName="REFDOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCCT" sourceName="REFDOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFACTIV" sourceName="REFACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUDT" sourceName="CPUDT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUTM" sourceName="CPUTM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="USNAM" sourceName="USNAM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWTYP" sourceName="AWTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG" sourceName="AWORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RWCUR" sourceName="RWCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BELNR" sourceName="BELNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUZEI" sourceName="BUZEI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LINETYPE" sourceName="LINETYPE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="XSPLITMOD" sourceName="XSPLITMOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GSBER" sourceName="GSBER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOSTL" sourceName="KOSTL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLDAT" sourceName="BLDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LSTAR" sourceName="LSTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFNR" sourceName="AUFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFPL" sourceName="AUFPL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN1" sourceName="ANLN1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN2" sourceName="ANLN2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWKEY" sourceName="BWKEY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWTAR" sourceName="BWTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANBWA" sourceName="ANBWA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KUNNR" sourceName="KUNNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LIFNR" sourceName="LIFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELN" sourceName="EBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELP" sourceName="EBELP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ERKRS" sourceName="ERKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PAOBJNR" sourceName="PAOBJNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PASUBNR" sourceName="PASUBNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PS_PSP_PNR" sourceName="PS_PSP_PNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDAUF" sourceName="KDAUF"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDPOS" sourceName="KDPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FKART" sourceName="FKART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKORG" sourceName="VKORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VTWEG" sourceName="VTWEG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUBEL" sourceName="AUBEL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUPOS" sourceName="AUPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPART" sourceName="SPART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VBELN" sourceName="VBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POSNR" sourceName="POSNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKGRP" sourceName="VKGRP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKBUR" sourceName="VKBUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STFLG" sourceName="STFLG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GRTYP" sourceName="GRTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VALUT" sourceName="VALUT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWREF_REV" sourceName="AWREF_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG_REV" sourceName="AWORG_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWART" sourceName="BWART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLART" sourceName="BLART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MATNR" sourceName="MATNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZBOI" sourceName="ZZBOI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COUNTER" sourceName="COUNTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZWSL17" sourceName="ZWSL17"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZMHIER" sourceName="ZZMHIER"/>
+    </input>
+    <input>
+      <viewNode xsi:type="View:Projection">#//P_COMPCODE_Attrs</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CURKEY_LC" sourceName="0CURKEY_LC"/>
+    </input>
+    <layout xCoordinate="110" yCoordinate="270" width="-1" height="-1" expanded="true"/>
+    <join leftInput="#//J_x10_LItems_CompCode/P_VT_x10_Line_Items_Table" rightInput="#//J_x10_LItems_CompCode/P_COMPCODE_Attrs" joinType="leftOuter">
+      <leftElementName>RLDNR</leftElementName>
+      <leftElementName>RBUKRS</leftElementName>
+      <rightElementName>ZC_LEDCO</rightElementName>
+      <rightElementName>COMP_CODE</rightElementName>
+    </join>
+  </viewNode>
+  <viewNode xsi:type="View:Projection" name="P_CALx_TIMECHARS">
+    <endUserTexts label=" "/>
+    <element name="0CALDAY">
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="0CALMONTH">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="0CALMONTH2">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="0CALQUART1">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="0CALQUARTER">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="0CALWEEK">
+      <endUserTexts label="Calendar year / week"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="0CALYEAR">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="0HALFYEAR1">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="0WEEKDAY1">
+      <endUserTexts label="Weekday"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="1ROWCOUNT">
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="0"/>
+    </element>
+    <element name="0FISCPER">
+      <inlineType primitiveType="NVARCHAR" length="7" precision="7" scale="0"/>
+    </element>
+    <element name="0FISCPER3">
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="0FISCVARNT">
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="0FISCYEAR">
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <input>
+      <entity>#//system-local.bw.bw2hana::ZAD_SEF23</entity>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALDAY" sourceName="0CALDAY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALMONTH" sourceName="0CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALMONTH2" sourceName="0CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALQUART1" sourceName="0CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALQUARTER" sourceName="0CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALWEEK" sourceName="0CALWEEK"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALYEAR" sourceName="0CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0HALFYEAR1" sourceName="0HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0WEEKDAY1" sourceName="0WEEKDAY1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="1ROWCOUNT" sourceName="1ROWCOUNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0FISCPER" sourceName="0FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0FISCPER3" sourceName="0FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0FISCVARNT" sourceName="0FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0FISCYEAR" sourceName="0FISCYEAR"/>
+    </input>
+    <layout xCoordinate="380" yCoordinate="290" width="-1" height="-1" expanded="true"/>
+  </viewNode>
+  <viewNode xsi:type="View:JoinNode" name="J_CALx_TIMECHARS" joinOrder="OUTSIDE_IN">
+    <endUserTexts label=" "/>
+    <element name="FISCVARNT">
+      <endUserTexts label="FISCVARNT"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="FISCPER">
+      <endUserTexts label="FISCPER"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="7" precision="0" scale="0"/>
+    </element>
+    <element name="SOURSYSTEM">
+      <endUserTexts label="SOURSYSTEM"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="2" precision="0" scale="0"/>
+    </element>
+    <element name="FISCPER3">
+      <endUserTexts label="FISCPER3"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="3" precision="0" scale="0"/>
+    </element>
+    <element name="FISCYEAR">
+      <endUserTexts label="FISCYEAR"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4" precision="0" scale="0"/>
+    </element>
+    <element name="CALDAY">
+      <endUserTexts label="CALDAY"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="8" precision="0" scale="0"/>
+    </element>
+    <element name="RCLNT">
+      <endUserTexts label="RCLNT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="GL_SIRID">
+      <endUserTexts label="GL_SIRID"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="RLDNR">
+      <endUserTexts label="RLDNR"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RRCTY">
+      <endUserTexts label="RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="RVERS">
+      <endUserTexts label="RVERS"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="RYEAR">
+      <endUserTexts label="RYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RTCUR">
+      <endUserTexts label="RTCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="RUNIT">
+      <endUserTexts label="RUNIT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="DRCRK">
+      <endUserTexts label="DRCRK"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="POPER">
+      <endUserTexts label="POPER"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="DOCCT">
+      <endUserTexts label="DOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="DOCNR">
+      <endUserTexts label="DOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="DOCLN">
+      <endUserTexts label="DOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RBUKRS">
+      <endUserTexts label="RBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RACCT">
+      <endUserTexts label="RACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RFAREA">
+      <endUserTexts label="RFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="RPRCTR">
+      <endUserTexts label="RPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RZZREGION">
+      <endUserTexts label="RZZREGION"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RZZREPHIER">
+      <endUserTexts label="RZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="RHOART">
+      <endUserTexts label="RHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RZZKUKLA">
+      <endUserTexts label="RZZKUKLA"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="LOGSYS">
+      <endUserTexts label="LOGSYS"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RASSC">
+      <endUserTexts label="RASSC"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RMVCT">
+      <endUserTexts label="RMVCT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZZCUST">
+      <endUserTexts label="ZZCUST"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EPRCTR">
+      <endUserTexts label="EPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KOKRS">
+      <endUserTexts label="KOKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZCONSCODE">
+      <endUserTexts label="ZZCONSCODE"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="WERKS">
+      <endUserTexts label="WERKS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STAGR">
+      <endUserTexts label="STAGR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="ZZACTIV">
+      <endUserTexts label="ZZACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZALLOC">
+      <endUserTexts label="ZZALLOC"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZONLINE">
+      <endUserTexts label="ZZONLINE"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="SBUKRS">
+      <endUserTexts label="SBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="SFAREA">
+      <endUserTexts label="SFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="SPRCTR">
+      <endUserTexts label="SPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="SZZREPHIER">
+      <endUserTexts label="SZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="SHOART">
+      <endUserTexts label="SHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="TSL">
+      <endUserTexts label="TSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="HSL">
+      <endUserTexts label="HSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="KSL">
+      <endUserTexts label="KSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2"/>
+    </element>
+    <element name="MSL">
+      <endUserTexts label="MSL"/>
+      <inlineType primitiveType="DECIMAL" length="15" precision="15" scale="3"/>
+    </element>
+    <element name="SGTXT">
+      <endUserTexts label="SGTXT"/>
+      <inlineType primitiveType="NVARCHAR" length="50" precision="50" scale="0"/>
+    </element>
+    <element name="DOCTY">
+      <endUserTexts label="DOCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ACTIV">
+      <endUserTexts label="ACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BUDAT">
+      <endUserTexts label="BUDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="WSDAT">
+      <endUserTexts label="WSDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="REFRYEAR">
+      <endUserTexts label="REFRYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="REFDOCNR">
+      <endUserTexts label="REFDOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="REFDOCLN">
+      <endUserTexts label="REFDOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="REFDOCCT">
+      <endUserTexts label="REFDOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="REFACTIV">
+      <endUserTexts label="REFACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CPUDT">
+      <endUserTexts label="CPUDT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="CPUTM">
+      <endUserTexts label="CPUTM"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="USNAM">
+      <endUserTexts label="USNAM"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AWTYP">
+      <endUserTexts label="AWTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="AWORG">
+      <endUserTexts label="AWORG"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RWCUR">
+      <endUserTexts label="RWCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="BELNR">
+      <endUserTexts label="BELNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BUZEI">
+      <endUserTexts label="BUZEI"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="LINETYPE">
+      <endUserTexts label="LINETYPE"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="XSPLITMOD">
+      <endUserTexts label="XSPLITMOD"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GSBER">
+      <endUserTexts label="GSBER"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="KOSTL">
+      <endUserTexts label="KOSTL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BLDAT">
+      <endUserTexts label="BLDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="LSTAR">
+      <endUserTexts label="LSTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="AUFNR">
+      <endUserTexts label="AUFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AUFPL">
+      <endUserTexts label="AUFPL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANLN1">
+      <endUserTexts label="ANLN1"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ANLN2">
+      <endUserTexts label="ANLN2"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWKEY">
+      <endUserTexts label="BWKEY"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWTAR">
+      <endUserTexts label="BWTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANBWA">
+      <endUserTexts label="ANBWA"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="KUNNR">
+      <endUserTexts label="KUNNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="LIFNR">
+      <endUserTexts label="LIFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELN">
+      <endUserTexts label="EBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELP">
+      <endUserTexts label="EBELP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ERKRS">
+      <endUserTexts label="ERKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PAOBJNR">
+      <endUserTexts label="PAOBJNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="PASUBNR">
+      <endUserTexts label="PASUBNR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PS_PSP_PNR">
+      <endUserTexts label="PS_PSP_PNR"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="KDAUF">
+      <endUserTexts label="KDAUF"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KDPOS">
+      <endUserTexts label="KDPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="FKART">
+      <endUserTexts label="FKART"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VKORG">
+      <endUserTexts label="VKORG"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VTWEG">
+      <endUserTexts label="VTWEG"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="AUBEL">
+      <endUserTexts label="AUBEL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AUPOS">
+      <endUserTexts label="AUPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="SPART">
+      <endUserTexts label="SPART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="VBELN">
+      <endUserTexts label="VBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="POSNR">
+      <endUserTexts label="POSNR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="VKGRP">
+      <endUserTexts label="VKGRP"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="VKBUR">
+      <endUserTexts label="VKBUR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STFLG">
+      <endUserTexts label="STFLG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GRTYP">
+      <endUserTexts label="GRTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="VALUT">
+      <endUserTexts label="VALUT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="AWREF_REV">
+      <endUserTexts label="AWREF_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AWORG_REV">
+      <endUserTexts label="AWORG_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BWART">
+      <endUserTexts label="BWART"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="BLART">
+      <endUserTexts label="BLART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="MATNR">
+      <endUserTexts label="MATNR"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="ZZBOI">
+      <endUserTexts label="ZZBOI"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="COUNTER">
+      <endUserTexts label=" "/>
+      <inlineType name="DECIMAL" primitiveType="DECIMAL" length="17" precision="0" scale="0"/>
+    </element>
+    <element name="0CURKEY_LC">
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="CURKEY_GC">
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="5" precision="0" scale="0"/>
+    </element>
+    <element name="ZWSL17">
+      <endUserTexts label=" "/>
+      <inlineType name="DECIMAL" primitiveType="DECIMAL" length="17" precision="0" scale="2"/>
+    </element>
+    <element name="ZZMHIER">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="0CALMONTH">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="0CALMONTH2">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="0CALQUART1">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="0CALQUARTER">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="0CALWEEK">
+      <endUserTexts label="Calendar year / week"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="0CALYEAR">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="0HALFYEAR1">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="0WEEKDAY1">
+      <endUserTexts label="Weekday"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="VTYPE" aggregationBehavior="NONE">
+      <endUserTexts label="VTYPE"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="3"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>'010'</formula>
+      </calculationDefinition>
+    </element>
+    <input>
+      <viewNode xsi:type="View:JoinNode">#//J_x10_LItems_CompCode</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER" sourceName="FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SOURSYSTEM" sourceName="SOURSYSTEM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER3" sourceName="FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCYEAR" sourceName="FISCYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALDAY" sourceName="CALDAY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RCLNT" sourceName="RCLNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GL_SIRID" sourceName="GL_SIRID"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RLDNR" sourceName="RLDNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RRCTY" sourceName="RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RVERS" sourceName="RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RYEAR" sourceName="RYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RTCUR" sourceName="RTCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RUNIT" sourceName="RUNIT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DRCRK" sourceName="DRCRK"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POPER" sourceName="POPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCCT" sourceName="DOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCNR" sourceName="DOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCLN" sourceName="DOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RBUKRS" sourceName="RBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RACCT" sourceName="RACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RFAREA" sourceName="RFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RPRCTR" sourceName="RPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREGION" sourceName="RZZREGION"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREPHIER" sourceName="RZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RHOART" sourceName="RHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZKUKLA" sourceName="RZZKUKLA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LOGSYS" sourceName="LOGSYS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RASSC" sourceName="RASSC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RMVCT" sourceName="RMVCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCUST" sourceName="ZZCUST"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EPRCTR" sourceName="EPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOKRS" sourceName="KOKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCONSCODE" sourceName="ZZCONSCODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WERKS" sourceName="WERKS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STAGR" sourceName="STAGR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZACTIV" sourceName="ZZACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZALLOC" sourceName="ZZALLOC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZONLINE" sourceName="ZZONLINE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SBUKRS" sourceName="SBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SFAREA" sourceName="SFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPRCTR" sourceName="SPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SZZREPHIER" sourceName="SZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SHOART" sourceName="SHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="TSL" sourceName="TSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HSL" sourceName="HSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KSL" sourceName="KSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MSL" sourceName="MSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SGTXT" sourceName="SGTXT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCTY" sourceName="DOCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACTIV" sourceName="ACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUDAT" sourceName="BUDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WSDAT" sourceName="WSDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFRYEAR" sourceName="REFRYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCNR" sourceName="REFDOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCLN" sourceName="REFDOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCCT" sourceName="REFDOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFACTIV" sourceName="REFACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUDT" sourceName="CPUDT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUTM" sourceName="CPUTM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="USNAM" sourceName="USNAM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWTYP" sourceName="AWTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG" sourceName="AWORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RWCUR" sourceName="RWCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BELNR" sourceName="BELNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUZEI" sourceName="BUZEI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LINETYPE" sourceName="LINETYPE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="XSPLITMOD" sourceName="XSPLITMOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GSBER" sourceName="GSBER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOSTL" sourceName="KOSTL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLDAT" sourceName="BLDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LSTAR" sourceName="LSTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFNR" sourceName="AUFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFPL" sourceName="AUFPL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN1" sourceName="ANLN1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN2" sourceName="ANLN2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWKEY" sourceName="BWKEY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWTAR" sourceName="BWTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANBWA" sourceName="ANBWA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KUNNR" sourceName="KUNNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LIFNR" sourceName="LIFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELN" sourceName="EBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELP" sourceName="EBELP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ERKRS" sourceName="ERKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PAOBJNR" sourceName="PAOBJNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PASUBNR" sourceName="PASUBNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PS_PSP_PNR" sourceName="PS_PSP_PNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDAUF" sourceName="KDAUF"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDPOS" sourceName="KDPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FKART" sourceName="FKART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKORG" sourceName="VKORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VTWEG" sourceName="VTWEG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUBEL" sourceName="AUBEL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUPOS" sourceName="AUPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPART" sourceName="SPART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VBELN" sourceName="VBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POSNR" sourceName="POSNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKGRP" sourceName="VKGRP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKBUR" sourceName="VKBUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STFLG" sourceName="STFLG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GRTYP" sourceName="GRTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VALUT" sourceName="VALUT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWREF_REV" sourceName="AWREF_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG_REV" sourceName="AWORG_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWART" sourceName="BWART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLART" sourceName="BLART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MATNR" sourceName="MATNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZBOI" sourceName="ZZBOI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COUNTER" sourceName="COUNTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CURKEY_LC" sourceName="0CURKEY_LC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CURKEY_GC" sourceName="CURKEY_GC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZWSL17" sourceName="ZWSL17"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZMHIER" sourceName="ZZMHIER"/>
+    </input>
+    <input>
+      <viewNode xsi:type="View:Projection">#//P_CALx_TIMECHARS</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALMONTH" sourceName="0CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALMONTH2" sourceName="0CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALQUART1" sourceName="0CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALQUARTER" sourceName="0CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALWEEK" sourceName="0CALWEEK"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALYEAR" sourceName="0CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0HALFYEAR1" sourceName="0HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0WEEKDAY1" sourceName="0WEEKDAY1"/>
+    </input>
+    <layout xCoordinate="180" yCoordinate="171" width="-1" height="-1" expanded="true"/>
+    <join leftInput="#//J_CALx_TIMECHARS/J_x10_LItems_CompCode" rightInput="#//J_CALx_TIMECHARS/P_CALx_TIMECHARS" joinType="inner">
+      <leftElementName>CALDAY</leftElementName>
+      <rightElementName>0CALDAY</rightElementName>
+    </join>
+  </viewNode>
+  <viewNode xsi:type="View:Aggregation" name="Aggregation">
+    <element name="ZC_SLINFP" hidden="false" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="InfoProvider Property"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="2" semanticType="empty"/>
+      <calculationDefinition language="COLUMN_ENGINE">
+        <formula>'LS'</formula>
+      </calculationDefinition>
+    </element>
+    <element name="FISCVARNT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="FISCVARNT"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="CHRT_ACCTS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="CHRT_ACCTS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="FISCPER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="FISCPER"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="7" precision="0" scale="0"/>
+    </element>
+    <element name="SOURSYSTEM" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SOURSYSTEM"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="2" precision="0" scale="0"/>
+    </element>
+    <element name="FISCPER3" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="FISCPER3"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="3" precision="0" scale="0"/>
+    </element>
+    <element name="FISCYEAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="FISCYEAR"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="4" precision="0" scale="0"/>
+    </element>
+    <element name="CALDAY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="CALDAY"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="8" precision="0" scale="0"/>
+    </element>
+    <element name="VTYPE" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VTYPE"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="3" precision="0" scale="0"/>
+    </element>
+    <element name="RCLNT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RCLNT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="GL_SIRID" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="GL_SIRID"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="RLDNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RLDNR"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RRCTY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RRCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="RVERS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RVERS"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="RYEAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RTCUR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RTCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0" semanticType="currencyCode"/>
+    </element>
+    <element name="RUNIT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RUNIT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0" semanticType="unitOfMeasure"/>
+    </element>
+    <element name="DRCRK" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="DRCRK"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="POPER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="POPER"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="DOCCT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="DOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="DOCNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="DOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="DOCLN" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="DOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RBUKRS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RACCT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RACCT"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RFAREA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="RPRCTR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RZZREGION" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RZZREGION"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="RZZREPHIER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="RHOART" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="RZZKUKLA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RZZKUKLA"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="LOGSYS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="LOGSYS"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RASSC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RASSC"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="RMVCT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RMVCT"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="ZZCUST" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZZCUST"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EPRCTR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="EPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KOKRS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="KOKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZCONSCODE" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZZCONSCODE"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="WERKS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="WERKS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STAGR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="STAGR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="ZZACTIV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZZACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZALLOC" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZZALLOC"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="ZZONLINE" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZZONLINE"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="SBUKRS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SBUKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="SFAREA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SFAREA"/>
+      <inlineType primitiveType="NVARCHAR" length="16" precision="16" scale="0"/>
+    </element>
+    <element name="SPRCTR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SPRCTR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="SZZREPHIER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SZZREPHIER"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="SHOART" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SHOART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="TSL" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label="TSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2" semanticType="amount"/>
+      <currencyConversion generateOutputUnitCurrencyElement="true" outputUnitCurrencyElementName="TSL_CURRENCY">
+        <errorHandling>
+          <constantValue>keepUnconverted</constantValue>
+        </errorHandling>
+        <sourceCurrency>
+          <constantValue>RTCUR</constantValue>
+        </sourceCurrency>
+        <erpDecimalShift>true</erpDecimalShift>
+        <erpDecimalShiftBack>false</erpDecimalShiftBack>
+      </currencyConversion>
+    </element>
+    <element name="HSL" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label="HSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2" semanticType="amount"/>
+      <currencyConversion generateOutputUnitCurrencyElement="true" outputUnitCurrencyElementName="HSL_CURRENCY">
+        <errorHandling>
+          <constantValue>keepUnconverted</constantValue>
+        </errorHandling>
+        <sourceCurrency>
+          <constantValue>ZZRHCUR</constantValue>
+        </sourceCurrency>
+        <erpDecimalShift>true</erpDecimalShift>
+        <erpDecimalShiftBack>false</erpDecimalShiftBack>
+      </currencyConversion>
+    </element>
+    <element name="KSL" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label="KSL"/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="17" scale="2" semanticType="amount"/>
+      <currencyConversion generateOutputUnitCurrencyElement="true" outputUnitCurrencyElementName="KSL_CURRENCY">
+        <errorHandling>
+          <constantValue>keepUnconverted</constantValue>
+        </errorHandling>
+        <sourceCurrency>
+          <constantValue>ZZRKCUR</constantValue>
+        </sourceCurrency>
+        <erpDecimalShift>true</erpDecimalShift>
+        <erpDecimalShiftBack>false</erpDecimalShiftBack>
+      </currencyConversion>
+    </element>
+    <element name="MSL" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label="MSL"/>
+      <inlineType primitiveType="DECIMAL" length="15" precision="15" scale="3" semanticType="quantity"/>
+      <fixedUnit>RUNIT</fixedUnit>
+    </element>
+    <element name="SGTXT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SGTXT"/>
+      <inlineType primitiveType="NVARCHAR" length="50" precision="50" scale="0"/>
+    </element>
+    <element name="DOCTY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="DOCTY"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="ACTIV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BUDAT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BUDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="WSDAT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="WSDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="REFRYEAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="REFRYEAR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="REFDOCNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="REFDOCNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="REFDOCLN" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="REFDOCLN"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="REFDOCCT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="REFDOCCT"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="REFACTIV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="REFACTIV"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="CPUDT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="CPUDT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="CPUTM" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="CPUTM"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="USNAM" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="USNAM"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AWTYP" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AWTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="AWORG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AWORG"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="RWCUR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="RWCUR"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="BELNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BELNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BUZEI" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BUZEI"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="LINETYPE" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="LINETYPE"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="XSPLITMOD" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="XSPLITMOD"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GSBER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="GSBER"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="KOSTL" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="KOSTL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BLDAT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BLDAT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="LSTAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="LSTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="AUFNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AUFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="AUFPL" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AUFPL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANLN1" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ANLN1"/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0"/>
+    </element>
+    <element name="ANLN2" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ANLN2"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWKEY" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BWKEY"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="BWTAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BWTAR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="ANBWA" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ANBWA"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="KUNNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="KUNNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="LIFNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="LIFNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELN" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="EBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="EBELP" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="EBELP"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ERKRS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ERKRS"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PAOBJNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="PAOBJNR"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="PASUBNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="PASUBNR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="PS_PSP_PNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="PS_PSP_PNR"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="KDAUF" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="KDAUF"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="KDPOS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="KDPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="FKART" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="FKART"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VKORG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VKORG"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="VTWEG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VTWEG"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="AUBEL" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AUBEL"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AUPOS" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AUPOS"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="SPART" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="SPART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="VBELN" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VBELN"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="POSNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="POSNR"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="VKGRP" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VKGRP"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="VKBUR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VKBUR"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0"/>
+    </element>
+    <element name="STFLG" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="STFLG"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="GRTYP" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="GRTYP"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0"/>
+    </element>
+    <element name="VALUT" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="VALUT"/>
+      <inlineType primitiveType="NVARCHAR" length="8" precision="8" scale="0"/>
+    </element>
+    <element name="AWREF_REV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AWREF_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="AWORG_REV" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="AWORG_REV"/>
+      <inlineType primitiveType="NVARCHAR" length="10" precision="10" scale="0"/>
+    </element>
+    <element name="BWART" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BWART"/>
+      <inlineType primitiveType="NVARCHAR" length="3" precision="3" scale="0"/>
+    </element>
+    <element name="BLART" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="BLART"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0"/>
+    </element>
+    <element name="MATNR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="MATNR"/>
+      <inlineType primitiveType="NVARCHAR" length="18" precision="18" scale="0"/>
+    </element>
+    <element name="ZZBOI" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="ZZBOI"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0"/>
+    </element>
+    <element name="COUNTER" hidden="false" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="0" scale="0"/>
+    </element>
+    <element name="ZZRHCUR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Currency Key for Local Currency"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0"/>
+    </element>
+    <element name="ZZRKCUR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Currency Key for Group Currency"/>
+      <inlineType name="NVARCHAR" primitiveType="NVARCHAR" length="5" precision="0" scale="0"/>
+    </element>
+    <element name="ZWSL17" hidden="false" aggregationBehavior="SUM" engineAggregation="SUM">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="DECIMAL" length="17" precision="0" scale="2" semanticType="amount"/>
+      <currencyConversion generateOutputUnitCurrencyElement="true" outputUnitCurrencyElementName="ZWSL17_CURRENCY">
+        <errorHandling>
+          <constantValue>keepUnconverted</constantValue>
+        </errorHandling>
+        <sourceCurrency>
+          <constantValue>ZC_RWCUR</constantValue>
+        </sourceCurrency>
+        <erpDecimalShift>true</erpDecimalShift>
+        <erpDecimalShiftBack>false</erpDecimalShiftBack>
+      </currencyConversion>
+    </element>
+    <element name="ZZMHIER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label=" "/>
+      <inlineType primitiveType="NVARCHAR" length="12" precision="12" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0CALMONTH" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar year/month"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0CALMONTH2" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar month"/>
+      <inlineType primitiveType="NVARCHAR" length="2" precision="2" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0CALQUART1" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0CALQUARTER" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar year/quarter"/>
+      <inlineType primitiveType="NVARCHAR" length="5" precision="5" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0CALWEEK" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar year / week"/>
+      <inlineType primitiveType="NVARCHAR" length="6" precision="6" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0CALYEAR" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Calendar year"/>
+      <inlineType primitiveType="NVARCHAR" length="4" precision="4" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0HALFYEAR1" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Halfyear"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0" semanticType="empty"/>
+    </element>
+    <element name="0WEEKDAY1" aggregationBehavior="NONE" drillDownEnablement="DRILL_DOWN">
+      <endUserTexts label="Weekday"/>
+      <inlineType primitiveType="NVARCHAR" length="1" precision="1" scale="0" semanticType="empty"/>
+    </element>
+    <input>
+      <viewNode xsi:type="View:JoinNode">#//J_CALx_TIMECHARS</viewNode>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCVARNT" sourceName="FISCVARNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CHRT_ACCTS" sourceName="CHRT_ACCTS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER" sourceName="FISCPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SOURSYSTEM" sourceName="SOURSYSTEM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCPER3" sourceName="FISCPER3"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FISCYEAR" sourceName="FISCYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CALDAY" sourceName="CALDAY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VTYPE" sourceName="VTYPE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RCLNT" sourceName="RCLNT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GL_SIRID" sourceName="GL_SIRID"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RLDNR" sourceName="RLDNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RRCTY" sourceName="RRCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RVERS" sourceName="RVERS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RYEAR" sourceName="RYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RTCUR" sourceName="RTCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RUNIT" sourceName="RUNIT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DRCRK" sourceName="DRCRK"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POPER" sourceName="POPER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCCT" sourceName="DOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCNR" sourceName="DOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCLN" sourceName="DOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RBUKRS" sourceName="RBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RACCT" sourceName="RACCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RFAREA" sourceName="RFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RPRCTR" sourceName="RPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREGION" sourceName="RZZREGION"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZREPHIER" sourceName="RZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RHOART" sourceName="RHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RZZKUKLA" sourceName="RZZKUKLA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LOGSYS" sourceName="LOGSYS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RASSC" sourceName="RASSC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RMVCT" sourceName="RMVCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCUST" sourceName="ZZCUST"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EPRCTR" sourceName="EPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOKRS" sourceName="KOKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZCONSCODE" sourceName="ZZCONSCODE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WERKS" sourceName="WERKS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STAGR" sourceName="STAGR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZACTIV" sourceName="ZZACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZALLOC" sourceName="ZZALLOC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZONLINE" sourceName="ZZONLINE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SBUKRS" sourceName="SBUKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SFAREA" sourceName="SFAREA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPRCTR" sourceName="SPRCTR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SZZREPHIER" sourceName="SZZREPHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SHOART" sourceName="SHOART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SGTXT" sourceName="SGTXT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="DOCTY" sourceName="DOCTY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ACTIV" sourceName="ACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUDAT" sourceName="BUDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="WSDAT" sourceName="WSDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFRYEAR" sourceName="REFRYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCNR" sourceName="REFDOCNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCLN" sourceName="REFDOCLN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFDOCCT" sourceName="REFDOCCT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="REFACTIV" sourceName="REFACTIV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUDT" sourceName="CPUDT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="CPUTM" sourceName="CPUTM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="USNAM" sourceName="USNAM"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWTYP" sourceName="AWTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG" sourceName="AWORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="RWCUR" sourceName="RWCUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BELNR" sourceName="BELNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BUZEI" sourceName="BUZEI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LINETYPE" sourceName="LINETYPE"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="XSPLITMOD" sourceName="XSPLITMOD"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GSBER" sourceName="GSBER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KOSTL" sourceName="KOSTL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLDAT" sourceName="BLDAT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LSTAR" sourceName="LSTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFNR" sourceName="AUFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUFPL" sourceName="AUFPL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN1" sourceName="ANLN1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANLN2" sourceName="ANLN2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWKEY" sourceName="BWKEY"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWTAR" sourceName="BWTAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ANBWA" sourceName="ANBWA"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KUNNR" sourceName="KUNNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="LIFNR" sourceName="LIFNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELN" sourceName="EBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="EBELP" sourceName="EBELP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ERKRS" sourceName="ERKRS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PAOBJNR" sourceName="PAOBJNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PASUBNR" sourceName="PASUBNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="PS_PSP_PNR" sourceName="PS_PSP_PNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDAUF" sourceName="KDAUF"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KDPOS" sourceName="KDPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="FKART" sourceName="FKART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKORG" sourceName="VKORG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VTWEG" sourceName="VTWEG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUBEL" sourceName="AUBEL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AUPOS" sourceName="AUPOS"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="SPART" sourceName="SPART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VBELN" sourceName="VBELN"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="POSNR" sourceName="POSNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKGRP" sourceName="VKGRP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VKBUR" sourceName="VKBUR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="STFLG" sourceName="STFLG"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="GRTYP" sourceName="GRTYP"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="VALUT" sourceName="VALUT"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWREF_REV" sourceName="AWREF_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="AWORG_REV" sourceName="AWORG_REV"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BWART" sourceName="BWART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="BLART" sourceName="BLART"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MATNR" sourceName="MATNR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZBOI" sourceName="ZZBOI"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZRHCUR" sourceName="0CURKEY_LC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZRKCUR" sourceName="CURKEY_GC"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZZMHIER" sourceName="ZZMHIER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALMONTH" sourceName="0CALMONTH"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALMONTH2" sourceName="0CALMONTH2"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALQUART1" sourceName="0CALQUART1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALQUARTER" sourceName="0CALQUARTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALWEEK" sourceName="0CALWEEK"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0CALYEAR" sourceName="0CALYEAR"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0HALFYEAR1" sourceName="0HALFYEAR1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="0WEEKDAY1" sourceName="0WEEKDAY1"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="TSL" sourceName="TSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="HSL" sourceName="HSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="KSL" sourceName="KSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="MSL" sourceName="MSL"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="COUNTER" sourceName="COUNTER"/>
+      <mapping xsi:type="Type:ElementMapping" targetName="ZWSL17" sourceName="ZWSL17"/>
+    </input>
+    <layout xCoordinate="176" yCoordinate="90" width="0" height="0" expanded="true"/>
+  </viewNode>
+  <viewLayout relativeWidthScenario="41"/>
+</View:ColumnView>

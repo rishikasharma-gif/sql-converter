@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAP XML to BigQuery SQL Converter Agent</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  
+  <!-- Loading Loader Overlay -->
+  <div id="loader-overlay" class="loader-overlay">
+    <div class="spinner"></div>
+    <p id="loader-headline">Converting SAP Schema...</p>
+    <span id="loader-status">Extracting calculation nodes and validating dependencies...</span>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- Top Header Navigation -->
+    <header>
+      <div class="logo-container">
+        <div class="logo-icon">⇄</div>
+        <div class="logo-text">
+          <h1>SQL Converter Agent</h1>
+          <p>SAP HANA XML models to optimized BigQuery standard SQL</p>
+        </div>
+      </div>
+      <div class="system-status">
+        <div class="status-dot"></div>
+        <span>Agent Online</span>
+      </div>
+    </header>
+
+    <!-- Main Workspace Grid -->
+    <div class="dashboard-grid">
+      
+      <!-- Left Column Panel -->
+      <aside>
+        
+        <!-- File Upload Card -->
+        <div class="glass-card">
+          <h3 class="card-title">📁 File Selector</h3>
+          <div id="upload-zone" class="upload-zone">
+            <div class="upload-icon">⇪</div>
+            <p>Drag & Drop SAP XML here</p>
+            <span>or click to browse files</span>
+            <input type="file" id="file-input" style="display: none;" accept=".xml">
+          </div>
+          
+          <div class="divider">OR CHOOSE SAMPLE</div>
+          
+          <!-- Sample list -->
+          <div id="sample-list" class="sample-list">
+            <div style="font-size: 0.8rem; color: var(--text-secondary); text-align: center;">Scanning data directory...</div>
+          </div>
+        </div>
+
+        <!-- Compliance Meter Card -->
+        <div class="glass-card">
+          <h3 class="card-title">🛡️ Data-Loss Audit</h3>
+          <div class="meter-container">
+            <div class="circular-meter">
+              <svg>
+                <defs>
+                  <linearGradient id="meter-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent-purple)"></stop>
+                    <stop offset="100%" stop-color="var(--accent-cyan)"></stop>
+                  </linearGradient>
+                </defs>
+                <circle class="bg-ring" cx="70" cy="70" r="65"></circle>
+                <circle class="fill-ring" cx="70" cy="70" r="65"></circle>
+              </svg>
+              <div class="meter-value">
+                <span id="compliance-score">0%</span>
+                <p>Coverage</p>
+              </div>
+            </div>
+            <div class="meter-label">
+              <h4 id="compliance-status">Pending Analysis</h4>
+              <p id="validation-fields-count">Upload a file to trigger the compliance check</p>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Right Column Panel -->
+      <main class="workspace">
+        
+        <!-- Workspace Header Controls -->
+        <div class="workspace-header">
+          <div id="active-file-name" class="active-file-indicator">
+            Active File: <span>No XML loaded</span>
+          </div>
+          <div class="action-buttons">
+            <button id="copy-btn" class="btn" disabled>📋 Copy SQL</button>
+            <button id="download-btn" class="btn btn-primary" disabled>⇩ Download SQL</button>
+          </div>
+        </div>
+
+        <!-- Code Workspace Codebox Tabs -->
+        <div class="glass-card" style="margin-bottom: 0;">
+          <div class="code-box-tabs">
+            <button id="tab-sql" class="code-tab active">Optimized BigQuery SQL</button>
+            <button id="tab-xml" class="code-tab">Parsed Logical Graph</button>
+          </div>
+          <div id="code-content" class="code-container">
+            <div class="placeholder-view">
+              <div style="font-size: 3rem;">⇄</div>
+              <p>Upload a SAP XML calculation model or select a preloaded sample in the sidebar to generate optimized BigQuery SQL.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Data validation checklist -->
+        <div class="validation-grid">
+          
+          <!-- checklist -->
+          <div class="glass-card" style="margin-bottom: 0;">
+            <h3 class="card-title">🔍 Field Compliance Checklist</h3>
+            <div class="fields-table-container">
+              <table class="fields-table">
+                <thead>
+                  <tr>
+                    <th>SAP XML Element</th>
+                    <th>Friendly Label</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="fields-table-body">
+                  <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-secondary); padding: 1.5rem;">
+                      No audit performed. Process an XML schema first.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- notes -->
+          <div class="glass-card" style="margin-bottom: 0;">
+            <h3 class="card-title">💡 Translation & Audit Notes</h3>
+            <div id="validation-notes-list" class="validation-notes-panel">
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">
+                Analysis details from the Gemini synthesis engine will be displayed here.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
