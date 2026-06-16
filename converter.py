@@ -163,17 +163,12 @@ class GeminiSQLGenerator:
 
     def generate_sql(self, parsed_metadata: dict, brd_text: str, reference_examples_text: str) -> dict:
         # Construct the system instruction prompt
-        system_instruction = (
-            "You are an expert Google BigQuery Data Architect specializing in SAP HANA Calculation View migrations.\n"
-            "Your task is to convert SAP Calculation View metadata (JSON format) into optimized BigQuery SQL.\n"
-            "Strictly enforce zero data loss. Map every source field and calculation correctly into BigQuery standard SQL.\n"
-            "Use optimized techniques like WITH (CTEs) representing projection/join/union nodes, CROSS JOIN UNNEST for unpivoting,\n"
-            "and appropriate analytical/aggregate functions. Align your SQL style with the provided reference conversion patterns.\n"
-            "Ensure that you output your response in JSON format containing two keys:\n"
-            "1) 'sql': The complete, optimized, ready-to-run BigQuery SQL query.\n"
-            "2) 'validation_notes': An array of strings explaining how complex structures or custom formulas were mapped, "
-            "and flagging any manual checks required."
-        )
+        system_prompt_path = os.path.join(os.path.dirname(__file__), "system_prompt.txt")
+        try:
+            with open(system_prompt_path, "r", encoding="utf-8") as f:
+                system_instruction = f.read()
+        except FileNotFoundError:
+            system_instruction = "You are an expert Google BigQuery Data Architect specializing in SAP HANA Calculation View migrations."
 
         prompt = f"""
 ### 1. BUSINESS REQUIREMENTS & STANDARDS
@@ -189,7 +184,7 @@ class GeminiSQLGenerator:
 - Analyze the parsed metadata (nodes, mappings, formulas, filters, and output target_fields).
 - Synthesize an optimized BigQuery SQL query matching the input dataflow graph.
 - Align with the naming conventions and structure patterns of the reference examples.
-- Return a JSON object with the keys 'sql' and 'validation_notes' as defined.
+- Return a JSON object with the keys 'normal_sql', 'optimized_sql', and 'metadata_table' as defined.
 """
 
         try:
@@ -237,15 +232,17 @@ class GeminiSQLGenerator:
             result = json.loads(clean_text)
             return {
                 "success": True,
-                "sql": result.get("sql", ""),
-                "validation_notes": result.get("validation_notes", [])
+                "normal_sql": result.get("normal_sql", ""),
+                "optimized_sql": result.get("optimized_sql", ""),
+                "metadata_table": result.get("metadata_table", "")
             }
         except Exception as e:
             return {
                 "success": False,
                 "error": f"Failed to generate SQL via Gemini API: {str(e)}",
-                "sql": "",
-                "validation_notes": []
+                "normal_sql": "",
+                "optimized_sql": "",
+                "metadata_table": ""
             }
 
 

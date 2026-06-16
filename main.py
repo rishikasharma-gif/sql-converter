@@ -116,17 +116,16 @@ async def convert_xml(
     generator = GeminiSQLGenerator()
     generation_result = generator.generate_sql(parsed_metadata, brd_text, reference_examples_text)
 
-    if not generation_result["success"]:
+    if not generation_result.get("success"):
+        print(f"Error during SQL generation: {generation_result.get('error')}")
         return {
             "success": False,
-            "filename": file_name,
-            "error": generation_result.get("error", "AI translation failed"),
-            "metadata": parsed_metadata,
-            "sql": "",
-            "validation_report": None
+            "optimized_sql": "",
+            "normal_sql": "",
+            "metadata_table": ""
         }
 
-    generated_sql = generation_result["sql"]
+    generated_sql = generation_result["optimized_sql"]
 
     # 4. Perform Data Loss Validation
     validator = DataLossValidator()
@@ -134,9 +133,8 @@ async def convert_xml(
 
     return {
         "success": True,
-        "filename": file_name,
-        "metadata": parsed_metadata,
-        "sql": generated_sql,
-        "validation_notes": generation_result["validation_notes"],
+        "optimized_sql": generated_sql,
+        "normal_sql": generation_result["normal_sql"],
+        "metadata_table": generation_result["metadata_table"],
         "validation_report": validation_report
     }

@@ -325,9 +325,10 @@ if xml_content:
             generator = GeminiSQLGenerator()
             generation_result = generator.generate_sql(parsed_metadata, brd_text, reference_examples_text)
             
-            if generation_result["success"]:
-                generated_sql = generation_result["sql"]
-                validation_notes = generation_result["validation_notes"]
+            if generation_result.get("success"):
+                generated_sql = generation_result.get("optimized_sql", "")
+                normal_sql = generation_result.get("normal_sql", "")
+                metadata_table = generation_result.get("metadata_table", "")
                 
                 # 4. Perform Data Loss Validation
                 validator = DataLossValidator()
@@ -354,17 +355,26 @@ if xml_content:
                 """, unsafe_allow_html=True)
                 
                 # Render code workspace tabs
-                tab_sql, tab_graph = st.tabs(["Optimized BigQuery SQL", "Parsed Logical Graph"])
+                tab_sql, tab_normal_sql, tab_graph = st.tabs(["Optimized BigQuery SQL", "Normal SQL", "Parsed Logical Graph"])
                 
                 with tab_sql:
                     # Action buttons: Download & Copy (Download is built-in, copy can use code block)
                     st.download_button(
-                        label="⇩ Download SQL File",
+                        label="⇩ Download Optimized SQL File",
                         data=generated_sql,
-                        file_name=f"{os.path.splitext(file_name)[0]}_bigquery.sql",
+                        file_name=f"{os.path.splitext(file_name)[0]}_optimized.sql",
                         mime="text/x-sql"
                     )
                     st.code(generated_sql, language="sql")
+                    
+                with tab_normal_sql:
+                    st.download_button(
+                        label="⇩ Download Normal SQL File",
+                        data=normal_sql,
+                        file_name=f"{os.path.splitext(file_name)[0]}_normal.sql",
+                        mime="text/x-sql"
+                    )
+                    st.code(normal_sql, language="sql")
                     
                 with tab_graph:
                     st.json(parsed_metadata)
@@ -413,14 +423,14 @@ if xml_content:
                 with col2:
                     st.markdown("""
                     <div class="glass-card" style="height: 100%;">
-                        <h3 class="card-title">💡 Translation & Audit Notes</h3>
+                        <h3 class="card-title">💡 Metadata Table</h3>
                         <div style="max-height: 400px; overflow-y: auto; color: #334155; font-size: 0.9rem;">
                     """, unsafe_allow_html=True)
                     
-                    for note in validation_notes:
-                        st.markdown(f"- {note}")
-                    if not validation_notes:
-                        st.markdown("<p style='color: #64748b;'>No specific translation notes generated.</p>", unsafe_allow_html=True)
+                    if metadata_table:
+                        st.markdown(metadata_table)
+                    else:
+                        st.markdown("<p style='color: #64748b;'>No metadata table generated.</p>", unsafe_allow_html=True)
                         
                     st.markdown("""
                         </div>
